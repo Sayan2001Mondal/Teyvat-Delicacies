@@ -8,7 +8,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {
-  Box, Button, Container, Stack, TextField, Typography, MenuItem, Select, InputLabel, FormControl
+  Box, Button, Container, Stack, TextField, Typography, MenuItem, Select, InputLabel, FormControl,
+  Input
 } from "@mui/material";
 
 type FormValues = {
@@ -17,10 +18,11 @@ type FormValues = {
   type: MenuType;
   nation: NationType;
   price: number;
-  imageUrl: string;
+  imageUrl?: string ;
+  image: FileList
 };
 
-const TYPES: MenuType[] = ["Appetizer", "Main", "Dessert", "Beverage"];
+const TYPES: MenuType[] = ["Entree", "Main", "Dessert"];
 const NATIONS: NationType[] = ["Mondstadt", "Liyue", "Inazuma", "Sumeru", "Fontaine", "Natlan"];
 
 const schema = yup.object({
@@ -29,7 +31,7 @@ const schema = yup.object({
   type: yup.mixed<MenuType>().oneOf(TYPES).required("Type is required"),
   nation: yup.mixed<NationType>().oneOf(NATIONS).required("Nation is required"),
   price: yup.number().typeError("Price must be a number").positive().required("Price is required"),
-  imageUrl: yup.string().url("Must be a valid URL").required("Image URL is required"),
+  image: yup.mixed<FileList>().required("Image Required")
 });
 
 export default function CreateMenuItemPage() {
@@ -51,7 +53,7 @@ export default function CreateMenuItemPage() {
     },
   });
 
-  const onSubmit = (data: FormValues) => mutation.mutate(data);
+  const onSubmit = (data: FormValues) => {debugger; return mutation.mutate(data)};
 
   return (
     <Container maxWidth="sm" sx={{ py: 6 }}>
@@ -89,7 +91,7 @@ export default function CreateMenuItemPage() {
           </FormControl>
 
           <TextField label="Price" type="number" fullWidth {...register("price")} error={!!errors.price} helperText={errors.price?.message} />
-          <TextField label="Image URL" fullWidth {...register("imageUrl")} error={!!errors.imageUrl} helperText={errors.imageUrl?.message} />
+          <Input fullWidth {...register("image")} error={!!errors.imageUrl} type="file" />
 
           <Stack direction="row" spacing={2} justifyContent="flex-end">
             <Button variant="outlined" onClick={() => router.push("/admin/menu")}>Cancel</Button>
