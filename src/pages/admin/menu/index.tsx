@@ -8,6 +8,7 @@ import {
   Box, Button, Container, Typography, Table, TableBody, TableCell, TableHead, TableRow, Stack
 } from "@mui/material";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function MenuAdminList() {
   const router = useRouter();
@@ -61,7 +62,7 @@ export default function MenuAdminList() {
                   <TableCell>₹ {Number(doc.price).toFixed(2)}</TableCell>
                   <TableCell>
                     {doc.imageUrl ? (
-                      <img src={doc.imageUrl} alt={doc.name} style={{ width: 64, height: 64, objectFit: "cover", borderRadius: 8 }} />
+                      <Image src={doc.imageUrl} alt={doc.name} height={64} width={64} style={{ objectFit: "cover", borderRadius: 8 }} />
                     ) : "—"}
                   </TableCell>
                   <TableCell align="right">
