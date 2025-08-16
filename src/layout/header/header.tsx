@@ -34,7 +34,7 @@ const Header = () => {
           href="/"
           sx={{ textDecoration: "none", color: "#ffcf6c", fontWeight: "bold" }}
         >
-          Genshin Food
+          Cantarella 
         </Typography>
 
         {/* Middle links */}
