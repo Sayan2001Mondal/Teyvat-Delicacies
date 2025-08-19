@@ -43,7 +43,7 @@ const MenuPage: FC = () => {
   const [cart, setCart] = useState<{ [id: string]: number }>({});
   const router = useRouter();
 
-  // Load cart from localStorage on mount
+  
   useEffect(() => {
     const storedCart = localStorage.getItem("genshin-cart");
     if (storedCart) {

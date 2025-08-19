@@ -11,7 +11,7 @@ const queryClient = new QueryClient();
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={restaurantTheme}>
-      <CssBaseline /> {/* resets styles for consistent UI */}
+      <CssBaseline /> 
       <QueryClientProvider client={queryClient}>
         <Wrapper>
           <Component {...pageProps} />

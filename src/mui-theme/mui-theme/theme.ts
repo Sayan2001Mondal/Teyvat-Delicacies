@@ -4,7 +4,7 @@ import { createTheme } from "@mui/material/styles";
 export const restaurantTheme = createTheme({
   palette: {
     primary: {
-      main: "#d32f2f", // rich red (food/restaurant feel)
+      main: "#d32f2f", 
       contrastText: "#fff",
     },
     secondary: {
@@ -28,7 +28,7 @@ export const restaurantTheme = createTheme({
     button: { textTransform: "none", fontWeight: 600 },
   },
   shape: {
-    borderRadius: 12, // softer corners
+    borderRadius: 12, 
   },
   components: {
     MuiButton: {

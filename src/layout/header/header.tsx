@@ -51,7 +51,7 @@ const Header = (props: HeaderProps) => {
   const router = useRouter();
   
 
-  // Switch to mobile/hamburger sooner to avoid mid-width overlaps (<= 1100px)
+  
   const isMobile = useMediaQuery("(max-width:1100px)");
 
   const [user, setUser] = useState<any>(null);
@@ -76,7 +76,7 @@ const Header = (props: HeaderProps) => {
 
     checkAuth();
     
-    // Listen for route changes
+    
     const handleRouteChange = () => checkAuth();
     router.events.on('routeChangeComplete', handleRouteChange);
     
@@ -85,7 +85,7 @@ const Header = (props: HeaderProps) => {
     };
   }, [router.events]);
 
-  // Initialize search query from URL params
+  
   useEffect(() => {
     if (router.isReady && router.query.search) {
       setSearchQuery(decodeURIComponent(router.query.search as string));
