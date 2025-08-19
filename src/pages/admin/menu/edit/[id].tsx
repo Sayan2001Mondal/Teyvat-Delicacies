@@ -3,7 +3,7 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getMenuItem, updateMenuItem, MenuType, NationType } from "@/hooks/services/menuservice";
+import { getMenuItem, updateMenuItem, MenuType, NationType } from "@/hooks/utils/services/menuservice";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";

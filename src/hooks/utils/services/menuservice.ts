@@ -1,25 +1,12 @@
 // hooks/services/menuService.ts
 import { databases, storage } from "@/hooks/utils/appwrite";
 import { ID, Query } from "appwrite";
+import { MenuItem} from "../../../interfaces/interface";
 
 const DATABASE_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID as string;
 const COLLECTION_ID = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID as string;
 const BUCKET_ID = process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID as string;
-// TYPES
-export type MenuItem = {
-  $id?: string;
-  name: string;
-  description: string;
-  type: MenuType;
-  nation: NationType;
-  price: number;
-  imageUrl?: string;
-  image: FileList;
-};
-export type MenuItemWithoutImage = Omit<MenuItem, 'image'>;
 
-export type MenuType = "Entree" | "Main" | "Dessert" ;
-export type NationType = "Mondstadt" | "Liyue" | "Inazuma" | "Sumeru" | "Fontaine" | "Natlan";
 
 // CRUD
 export async function listMenuItems() {

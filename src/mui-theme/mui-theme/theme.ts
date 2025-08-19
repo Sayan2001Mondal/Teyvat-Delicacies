@@ -1,67 +1,41 @@
 // src/mui-theme/theme.ts
 import { createTheme } from "@mui/material/styles";
 
-export const genshinTheme = createTheme({
+export const restaurantTheme = createTheme({
   palette: {
     primary: {
-      main: "#d4af37", 
+      main: "#d32f2f", // rich red (food/restaurant feel)
       contrastText: "#fff",
     },
     secondary: {
-      main: "#1e3a5f", 
+      main: "#ff9800",
+      contrastText: "#fff",
     },
     background: {
-      default: "#f5f0e6", 
-      paper: "#faf5e1", 
+      default: "#fff8f0", 
+      paper: "#ffffff",
     },
     text: {
-      primary: "#3a2c1a",
+      primary: "#333333",
+      secondary: "#555555",
     },
   },
   typography: {
-    fontFamily: `"Merriweather", serif`,
-    h4: {
-      fontWeight: 700,
-      letterSpacing: "0.05em",
-    },
-    body1: {
-      fontFamily: `"Open Sans", sans-serif`,
-    },
+    fontFamily: "Poppins, sans-serif",
+    h1: { fontWeight: 700 },
+    h2: { fontWeight: 600 },
+    h3: { fontWeight: 600 },
+    button: { textTransform: "none", fontWeight: 600 },
+  },
+  shape: {
+    borderRadius: 12, // softer corners
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: "12px",
-          fontWeight: 600,
-          textTransform: "none",
-          background: "linear-gradient(135deg, #d4af37 0%, #c1972c 100%)",
-          boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-          "&:hover": {
-            background: "linear-gradient(135deg, #e0b94b 0%, #cda632 100%)",
-            boxShadow: "0 6px 14px rgba(0,0,0,0.3)",
-          },
-        },
-      },
-    },
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          "& label.Mui-focused": {
-            color: "#d4af37",
-          },
-          "& .MuiOutlinedInput-root": {
-            "& fieldset": {
-              borderColor: "#d4af37",
-            },
-            "&:hover fieldset": {
-              borderColor: "#c1972c",
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: "#d4af37",
-              boxShadow: "0 0 6px rgba(212, 175, 55, 0.5)",
-            },
-          },
+          borderRadius: 8,
+          padding: "10px 20px",
         },
       },
     },

@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteMenuItem, listMenuItems } from "@/hooks/services/menuservice";
+import { deleteMenuItem, listMenuItems } from "@/hooks/utils/services/menuservice";
 import { toast } from "sonner";
 import { useRouter } from "next/router";
 import {

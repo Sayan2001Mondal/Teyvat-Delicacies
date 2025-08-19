@@ -4,13 +4,13 @@ import { Toaster } from "sonner";
 import Wrapper from "@/layout/wrapper/wrapper";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import { genshinTheme } from "../mui-theme/mui-theme/theme"; // <-- Genshin theme import
+import { restaurantTheme } from "@/mui-theme/mui-theme/theme";
 
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={genshinTheme}>
+    <ThemeProvider theme={restaurantTheme}>
       <CssBaseline /> {/* resets styles for consistent UI */}
       <QueryClientProvider client={queryClient}>
         <Wrapper>

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/router";
 import { useMutation } from "@tanstack/react-query";
-import { createMenuItem, MenuType, NationType } from "@/hooks/services/menuservice";
+import { createMenuItem, MenuType, NationType } from "@/hooks/utils/services/menuservice";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
