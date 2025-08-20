@@ -17,6 +17,10 @@
     "@mui/icons-material": "^7.3.1",
     "@mui/material": "^7.3.1",
     "@mui/material-nextjs": "^7.3.0",
+    "@mui/x-data-grid": "^8.10.1",
+    "@splidejs/react-splide": "^0.7.12",
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/splide-extension-auto-scroll": "^0.5.3",
     "@tanstack/react-query": "^5.84.2",
     "appwrite": "^18.1.1",
     "axios": "^1.11.0",
@@ -29,6 +33,7 @@
     "react-hook-form": "^7.62.0",
     "react-hot-toast": "^2.5.2",
     "sonner": "^2.0.7",
+    "splide": "^0.0.1-security",
     "swiper": "^11.2.10",
     "yup": "^1.7.0"
   },

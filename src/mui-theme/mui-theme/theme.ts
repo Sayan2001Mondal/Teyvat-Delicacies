@@ -4,7 +4,7 @@ import { createTheme } from "@mui/material/styles";
 export const restaurantTheme = createTheme({
   palette: {
     primary: {
-      main: "#d32f2f", 
+      main: "#2196f3", 
       contrastText: "#fff",
     },
     secondary: {

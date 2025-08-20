@@ -10,6 +10,7 @@ export const account = new Account(client);
 export const databases = new Databases(client);
 export const storage = new Storage(client);
 
+
 // Constants
 export const DATABASE_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID!;
 export const MENU_COLLECTION_ID = process.env.NEXT_PUBLIC_APPWRITE_MENU_COLLECTION_ID!;
@@ -51,5 +52,5 @@ export async function updateMenuItem(id: string, data: Partial<{
 export async function deleteMenuItem(id: string) {
   return await databases.deleteDocument(DATABASE_ID, MENU_COLLECTION_ID, id);
 }
-export { ID };
+export { ID, Query };
 

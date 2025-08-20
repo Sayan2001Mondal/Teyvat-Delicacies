@@ -20,8 +20,18 @@ export default function Login() {
 
   const onSubmit = async (data: any) => {
     try {
-      await account.createEmailPasswordSession(data.email, data.password);
+      // 1. Login with Appwrite
+      const session = await account.createEmailPasswordSession(
+        data.email,
+        data.password
+      );
+
+      // 2. Set your own cookie (for middleware)
+      document.cookie = `session=${session.$id}; path=/; max-age=86400; SameSite=Lax`;
+
       toast.success("Login successful");
+
+      // 3. Redirect
       router.push("/");
     } catch (err: any) {
       toast.error(err.message || "Login failed");
@@ -32,9 +42,26 @@ export default function Login() {
     <Container maxWidth="xs">
       <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ mt: 8 }}>
         <Typography variant="h5" align="center" mb={3}>Login</Typography>
-        <TextField fullWidth label="Email" {...register("email")} error={!!errors.email} helperText={errors.email?.message} margin="normal" />
-        <TextField fullWidth label="Password" type="password" {...register("password")} error={!!errors.password} helperText={errors.password?.message} margin="normal" />
-        <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>Login</Button>
+        <TextField
+          fullWidth
+          label="Email"
+          {...register("email")}
+          error={!!errors.email}
+          helperText={errors.email?.message}
+          margin="normal"
+        />
+        <TextField
+          fullWidth
+          label="Password"
+          type="password"
+          {...register("password")}
+          error={!!errors.password}
+          helperText={errors.password?.message}
+          margin="normal"
+        />
+        <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
+          Login
+        </Button>
         <Link href="/registration">Register here</Link>
       </Box>
     </Container>

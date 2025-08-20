@@ -32,3 +32,4 @@ export async function updateMenuItem(id: string, payload: Partial<MenuItem>) {
 export async function deleteMenuItem(id: string) {
   return databases.deleteDocument(DATABASE_ID, COLLECTION_ID, id);
 }
+
