@@ -19,7 +19,7 @@ export async function getMenuItem(id: string) {
 
 export async function createMenuItem(payload: MenuItem) {
   const fileResponse = await storage.createFile(BUCKET_ID,ID.unique(),payload.image[0])
-  const url = await storage.getFileView(BUCKET_ID,fileResponse.$id)
+  const url =  storage.getFileView(BUCKET_ID,fileResponse.$id)
   const { image, ...restPayload } = payload;
   restPayload.imageUrl = url;
   return databases.createDocument(DATABASE_ID, COLLECTION_ID, ID.unique(), restPayload);
