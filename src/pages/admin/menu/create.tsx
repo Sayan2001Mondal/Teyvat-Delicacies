@@ -23,7 +23,7 @@ type FormValues = {
 };
 
 const TYPES: MenuType[] = ["Entree", "Main", "Dessert"];
-const NATIONS: NationType[] = ["Mondstadt", "Liyue", "Inazuma", "Sumeru", "Fontaine", "Natlan"];
+const NATIONS: NationType[] = ["German", "Chinese", "Japanese", "Indian", "French", "Mexican"];
 
 const schema = yup.object({
   name: yup.string().required("Name is required"),
@@ -38,7 +38,7 @@ export default function CreateMenuItemPage() {
   const router = useRouter();
   const { register, handleSubmit, formState: { errors }, reset, setValue, watch } = useForm<FormValues>({
     resolver: yupResolver(schema),
-    defaultValues: { type: "Main", nation: "Mondstadt" }
+    defaultValues: { type: "Main", nation: "German" }
   });
 
   const mutation = useMutation({

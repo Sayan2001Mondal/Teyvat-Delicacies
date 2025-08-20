@@ -42,6 +42,8 @@ import ContactMailIcon from "@mui/icons-material/ContactMail";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ClearIcon from "@mui/icons-material/Clear";
 import SearchInput from "@/hooks/utils/services/searchInput";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import LockResetIcon from "@mui/icons-material/LockReset"
 
 interface HeaderProps {
   window?: () => Window;
@@ -310,21 +312,37 @@ const Header = (props: HeaderProps) => {
                         background: "white",
                         
                         border: "1px solid black",
-                        borderRadius: 2,
+                        
                         mt: 1,
                       },
                     }}
                   >
-                    <MenuItem
+                    <MenuItem component= {Link as any} href = "/profile"
                       onClick={() => setUserMenuAnchor(null)}
                       sx={{ 
                         color: "black", 
                         "&:hover": { background: "rgba(255, 207, 108, 0.1)" } 
                       }}
                     >
-                      <PersonIcon sx={{ mr: 1 }} /> Profile
+                      <PersonIcon  sx={{ mr: 1 }} 
+                        
+                      /> Profile
                     </MenuItem>
-                    <Divider sx={{ borderColor: "rgba(255, 207, 108, 0.2)" }} />
+                    
+                    <Divider sx={{ borderColor: "black" }} />
+
+                      {user.labels?.includes("admin") && (
+                        <MenuItem component={Link as any} href="/admin/menu" onClick={() => setUserMenuAnchor(null)}>
+                          <AdminPanelSettingsIcon sx={{mr : 1}} />Admin Panel
+                        </MenuItem>
+                      )}
+                      <MenuItem component={Link as any} href="/change-password" onClick={()=> setUserMenuAnchor(null)}>
+                        <LockResetIcon sx={{mr:1}} /> Change Password
+                      </MenuItem>
+
+
+                      <Divider sx={{borderColor: "black"}}/>
+
                     <MenuItem
                       onClick={handleLogout}
                       sx={{ 
@@ -350,7 +368,7 @@ const Header = (props: HeaderProps) => {
                       px: 3,
                       py: -2,
                       textTransform: "none",
-                      borderRadius: "8px",
+                      
                       "&:hover": {
                         cursor: 'pointer',
                         background: "#ff6333"
@@ -368,7 +386,7 @@ const Header = (props: HeaderProps) => {
                       border: "1px solid black",
                       px: 2,
                       textTransform: "none",
-                      borderRadius: "8px",
+                      
                       "&:hover": {
                         cursor: "pointer",
                         background: "white",
@@ -454,7 +472,7 @@ const Header = (props: HeaderProps) => {
                   sx={{
                     color: "black",
                     border: "1px solid rgba(0, 0, 0, 0.3)",
-                    borderRadius: "22px",
+                  
                     py: 1.25,
                     textTransform: "none",
                     "&:hover": {
@@ -476,7 +494,7 @@ const Header = (props: HeaderProps) => {
                   sx={{
                     color: "black",
                     border: "1px solid rgba(0, 0, 0, 0.3)",
-                    borderRadius: "22px",
+                    
                     py: 1.25,
                     textTransform: "none",
                     "&:hover": {

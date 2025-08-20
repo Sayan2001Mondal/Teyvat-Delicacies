@@ -5,7 +5,7 @@ import { Box, Container, Typography, Button, Stack, useTheme, useMediaQuery } fr
 import Link from "next/link";
 import Splide from "@splidejs/splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
-
+import SteakImg from  "../../public/images/steak-frites.jpg"
 import "@splidejs/splide/dist/css/splide.min.css";
 
 const foodImages = [
@@ -55,7 +55,10 @@ export default function HomePage() {
           justifyContent: "center",
           textAlign: "center",
           px: { xs: 2, sm: 3, md: 6 },
-          background: "#ff3d00",
+          backgroundImage: `url(${SteakImg.src})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           color: "white",
         }}
       >
@@ -63,8 +66,9 @@ export default function HomePage() {
           <Typography
             variant={isXs ? "h4" : isSm ? "h3" : isMd ? "h2" : "h1"}
             fontWeight={800}
-            color="black"
+            color="#beb5ce"
             gutterBottom
+            className = "bordered-text" 
           >
             Welcome to FoodZone 🍴
           </Typography>
