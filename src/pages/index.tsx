@@ -74,7 +74,8 @@ export default function HomePage() {
           </Typography>
           <Typography
             variant={isXs ? "body1" : "h6"}
-            sx={{ maxWidth: "700px", mx: "auto", opacity: 0.9, color: "black", fontWeight: "600" }}
+            sx={{ maxWidth: "700px", mx: "auto", opacity: 0.9, color: "#fff", fontWeight: "600",  }
+          }
             gutterBottom
           >
             Delicious meals delivered fresh to your doorstep. Explore our menu and discover your next favorite dish!
