@@ -1,7 +1,7 @@
 
 
 .bordered-text {
-  color: black; /* Or any desired text color */
+  color: black; 
   text-shadow: 
     1px 1px 0 #000,   /* Bottom-right */
     -1px 1px 0 #000,  /* Bottom-left */

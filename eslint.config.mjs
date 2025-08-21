@@ -14,7 +14,7 @@ const eslintConfig = [
   {
     rules: {
       "react/no-unescaped-entities": "off",
-      "@typescript-eslint/no-explicit-any": "off", // This will also fix your 'any' type errors
+      "@typescript-eslint/no-explicit-any": "off", 
     },
   },
 ];
