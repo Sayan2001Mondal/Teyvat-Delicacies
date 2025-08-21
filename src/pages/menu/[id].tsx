@@ -1,4 +1,6 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { databases, storage } from "@/hooks/utils/appwrite";
 
@@ -7,8 +9,7 @@ const COLLECTION_ID = process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ID!;
 const BUCKET_ID = process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ID!;
 
 export default function MenuDetail() {
-  const router = useRouter();
-  const { id } = router.query;
+  const { id } = useParams();
   const [item, setItem] = useState<any>(null);
 
   useEffect(() => {
@@ -16,8 +17,8 @@ export default function MenuDetail() {
       databases.getDocument(DB_ID, COLLECTION_ID, id as string).then((doc) => {
         setItem({
           ...doc,
-          imageUrl: doc.ImageUrl
-            ? storage.getFilePreview(BUCKET_ID, doc.ImageUrl).href
+          imageUrl: doc.imageUrl
+            ? storage.getFilePreview(BUCKET_ID, doc.imageUrl).toString()
             : null,
         });
       });

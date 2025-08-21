@@ -231,7 +231,7 @@ const MenuPage: FC = () => {
           </Box>
         </Container>
 
-        {/* Decorative Elements */}
+        
         <Box
           sx={{
             position: "absolute",
