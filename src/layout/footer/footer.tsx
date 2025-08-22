@@ -170,7 +170,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <Typography variant="body2">
-          © {new Date().getFullYear()} FoodHubb App by Sayan Mondal. All rights reserved.
+          © {new Date().getFullYear()} FoodZone App by Sayan Mondal. All rights reserved.
         </Typography>
       </Box>
     </Box>
