@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
+import Swal from "sweetalert2";
 
 export default function MenuAdminList() {
   const router = useRouter();
@@ -27,6 +28,23 @@ export default function MenuAdminList() {
     },
     onError: (e: any) => toast.error(e?.message || "Delete failed"),
   });
+
+  const handleDelete = async (itemId: string, itemName: string) => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: `You want to remove "${itemName}" from the menu?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel'
+    });
+
+    if (result.isConfirmed) {
+      del.mutate(itemId);
+    }
+  };
 
   return (
     <Container maxWidth="lg" sx={{ py: 6 }}>
@@ -71,7 +89,7 @@ export default function MenuAdminList() {
                       <Button
                         size="small"
                         color="error"
-                        onClick={() => del.mutate(doc.$id)}
+                        onClick={() => handleDelete(doc.$id, doc.name)}
                         disabled={del.isPending}
                       >
                         {del.isPending ? "Deleting..." : "Delete"}

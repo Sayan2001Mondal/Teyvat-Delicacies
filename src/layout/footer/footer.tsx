@@ -8,7 +8,7 @@ const Footer = () => {
       component="footer"
       sx={{
         background: "black",
-        color: "orange",
+        color: "#ff3d00",
         textAlign: "center",
         py: 4,
         mt: 4,
@@ -20,7 +20,7 @@ const Footer = () => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" }, // column on mobile, row on md+
+          flexDirection: { xs: "column", md: "row" }, 
           justifyContent: "space-between",
           alignItems: "flex-start",
           maxWidth: 1200,
@@ -32,7 +32,7 @@ const Footer = () => {
         {/* About Section */}
         <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
           <Typography variant="h6" gutterBottom sx={{ color: "white", fontWeight: "bold" }}>
-            About FoodHubb
+            About FoodZone
           </Typography>
           <Typography variant="body2">
             Discover amazing recipes, connect with food lovers, and share your culinary adventures with our community.
@@ -45,16 +45,16 @@ const Footer = () => {
             Quick Links
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            <Link href="/recipes" color="inherit" underline="hover">
+            <Link href="/menu" color="inherit" underline="hover">
               Browse Recipes
             </Link>
-            <Link href="/categories" color="inherit" underline="hover">
+            <Link href="#" color="inherit" underline="hover">
               Categories
             </Link>
-            <Link href="/favorites" color="inherit" underline="hover">
+            <Link href="#" color="inherit" underline="hover">
               My Favorites
             </Link>
-            <Link href="/profile" color="inherit" underline="hover">
+            <Link href="#" color="inherit" underline="hover">
               Profile
             </Link>
           </Box>
@@ -73,7 +73,7 @@ const Footer = () => {
               sx={{ display: "flex", alignItems: "center", justifyContent: { xs: "center", md: "flex-start" }, mb: 1 }}
             >
               <Email sx={{ mr: 1, fontSize: 16 }} />
-              contact@foodhubb.com
+              contact@FoodZone.com
             </Typography>
             <Typography
               variant="body2"
@@ -92,17 +92,54 @@ const Footer = () => {
           </Box>
 
           {/* Social Media Icons */}
-          <Box>
-            <IconButton color="inherit" href="#" aria-label="Facebook">
-              <Facebook />
-            </IconButton>
-            <IconButton color="inherit" href="#" aria-label="Twitter">
-              <Twitter />
-            </IconButton>
-            <IconButton color="inherit" href="#" aria-label="Instagram">
-              <Instagram />
-            </IconButton>
-          </Box>
+         {/* Social Media Icons */}
+<Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" }, gap: 1 }}>
+  <IconButton
+    color="inherit"
+    href="https://www.facebook.com/"
+    aria-label="Facebook"
+    sx={{
+      transition: "all 0.3s ease",
+      "&:hover": {
+        color: "#1877f2", // Facebook blue
+        transform: "scale(1.1)",
+      },
+    }}
+  >
+    <Facebook />
+  </IconButton>
+
+  <IconButton
+    color="inherit"
+    href="https://x.com/"
+    aria-label="Twitter"
+    sx={{
+      transition: "all 0.3s ease",
+      "&:hover": {
+        color: "#1da1f2", // Twitter blue
+        transform: "scale(1.1)",
+      },
+    }}
+  >
+    <Twitter />
+  </IconButton>
+
+  <IconButton
+    color="inherit"
+    href="https://www.instagram.com/"
+    aria-label="Instagram"
+    sx={{
+      transition: "all 0.3s ease",
+      "&:hover": {
+        color: "#e4405f", // Instagram pink
+        transform: "scale(1.1)",
+      },
+    }}
+  >
+    <Instagram />
+  </IconButton>
+</Box>
+
         </Box>
       </Box>
 
@@ -117,16 +154,16 @@ const Footer = () => {
             flexWrap: "wrap",
           }}
         >
-          <Link href="/privacy" color="inherit" underline="hover" variant="body2">
+          <Link href="#" color="inherit" underline="hover" variant="body2">
             Privacy Policy
           </Link>
-          <Link href="/terms" color="inherit" underline="hover" variant="body2">
+          <Link href="#" color="inherit" underline="hover" variant="body2">
             Terms of Service
           </Link>
-          <Link href="/cookies" color="inherit" underline="hover" variant="body2">
+          <Link href="#" color="inherit" underline="hover" variant="body2">
             Cookie Policy
           </Link>
-          <Link href="/support" color="inherit" underline="hover" variant="body2">
+          <Link href="#" color="inherit" underline="hover" variant="body2">
             Support
           </Link>
         </Box>

@@ -13,8 +13,9 @@ import {
   InputAdornment,
   Divider,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import dynamic from "next/dynamic";
 
 // Icons
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -25,6 +26,12 @@ import SendIcon from "@mui/icons-material/Send";
 import PersonIcon from "@mui/icons-material/Person";
 import MessageIcon from "@mui/icons-material/Message";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
+
+// Dynamically import the map to avoid SSR issues
+const MapContainer = dynamic(() => import('react-leaflet').then(mod => mod.MapContainer), { ssr: false });
+const TileLayer = dynamic(() => import('react-leaflet').then(mod => mod.TileLayer), { ssr: false });
+const Marker = dynamic(() => import('react-leaflet').then(mod => mod.Marker), { ssr: false });
+const Popup = dynamic(() => import('react-leaflet').then(mod => mod.Popup), { ssr: false });
 
 interface ContactFormData {
   name: string;
@@ -48,6 +55,30 @@ export default function ContactPage() {
   });
   
   const [loading, setLoading] = useState(false);
+  const [mapLoaded, setMapLoaded] = useState(false);
+
+  // Restaurant location (Bankra, West Bengal)
+  const restaurantLocation = {
+    lat: 22.6203,
+    lng: 88.3199,
+    address: "123 Food Street, Culinary District, Bankra, West Bengal 711403"
+  };
+
+  useEffect(() => {
+    // Load Leaflet CSS
+    if (typeof window !== 'undefined') {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+      document.head.appendChild(link);
+      
+      // Load Leaflet JS
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      script.onload = () => setMapLoaded(true);
+      document.head.appendChild(script);
+    }
+  }, []);
 
   const handleInputChange = (field: keyof ContactFormData) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -434,7 +465,7 @@ export default function ContactPage() {
           </Box>
         </Paper>
 
-        {/* Map Placeholder */}
+        {/* Interactive Map */}
         <Paper
           sx={{
             p: { xs: 2.5, sm: 3 },
@@ -454,22 +485,86 @@ export default function ContactPage() {
           >
             Find Us Here
           </Typography>
+          
           <Box
             sx={{
-              height: { xs: 180, sm: 200, md: 250 },
-              background: "linear-gradient(45deg, #f5f5f5 25%, transparent 25%), linear-gradient(-45deg, #f5f5f5 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f5f5f5 75%), linear-gradient(-45deg, transparent 75%, #f5f5f5 75%)",
-              backgroundSize: "20px 20px",
-              backgroundPosition: "0 0, 0 10px, 10px -10px, -10px 0px",
+              height: { xs: 250, sm: 300, md: 350 },
               borderRadius: 2,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "text.secondary",
-              fontSize: { xs: "0.8rem", sm: "0.9rem" },
-              textAlign: "center",
+              overflow: "hidden",
+              position: "relative",
             }}
           >
-            Interactive Map Coming Soon
+            {mapLoaded && typeof window !== 'undefined' ? (
+              <MapContainer
+                center={[restaurantLocation.lat, restaurantLocation.lng]}
+                zoom={15}
+                style={{ height: "100%", width: "100%" }}
+                scrollWheelZoom={false}
+              >
+                <TileLayer
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                />
+                <Marker position={[restaurantLocation.lat, restaurantLocation.lng]}>
+                  <Popup>
+                    <Box sx={{ textAlign: "center", p: 1 }}>
+                      <RestaurantIcon sx={{ color: "#ff3d00", fontSize: 24, mb: 1 }} />
+                      <Typography variant="subtitle1" fontWeight={600} gutterBottom>
+                        FoodZone Restaurant
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {restaurantLocation.address}
+                      </Typography>
+                      <Button
+                        size="small"
+                        sx={{ 
+                          mt: 1,
+                          color: "#ff3d00",
+                          textTransform: "none",
+                          fontWeight: 600
+                        }}
+                        onClick={() => {
+                          const url = `https://maps.google.com/?q=${restaurantLocation.lat},${restaurantLocation.lng}`;
+                          window.open(url, '_blank');
+                        }}
+                      >
+                        Get Directions
+                      </Button>
+                    </Box>
+                  </Popup>
+                </Marker>
+              </MapContainer>
+            ) : (
+              <Box
+                sx={{
+                  height: "100%",
+                  background: "linear-gradient(45deg, #f5f5f5 25%, transparent 25%), linear-gradient(-45deg, #f5f5f5 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f5f5f5 75%), linear-gradient(-45deg, transparent 75%, #f5f5f5 75%)",
+                  backgroundSize: "20px 20px",
+                  backgroundPosition: "0 0, 0 10px, 10px -10px, -10px 0px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "text.secondary",
+                  fontSize: { xs: "0.9rem", sm: "1rem" },
+                  textAlign: "center",
+                  flexDirection: "column",
+                  gap: 2
+                }}
+              >
+                <LocationOnIcon sx={{ fontSize: 40, color: "#ff3d00" }} />
+                <Typography>Loading Interactive Map...</Typography>
+              </Box>
+            )}
+          </Box>
+          
+          {/* Map Info */}
+          <Box sx={{ mt: 2, textAlign: "center" }}>
+            <Typography variant="body2" color="text.secondary">
+              📍 Located in the heart of Bankra, West Bengal
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+              Click the marker for directions • Scroll to zoom • Drag to explore
+            </Typography>
           </Box>
         </Paper>
 

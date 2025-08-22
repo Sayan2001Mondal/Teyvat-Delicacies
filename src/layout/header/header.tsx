@@ -317,7 +317,7 @@ const Header = (props: HeaderProps) => {
                       },
                     }}
                   >
-                    <MenuItem component= {Link as any} href = "/profile"
+                    {/* <MenuItem component= {Link as any} href = "/profile"
                       onClick={() => setUserMenuAnchor(null)}
                       sx={{ 
                         color: "black", 
@@ -327,18 +327,18 @@ const Header = (props: HeaderProps) => {
                       <PersonIcon  sx={{ mr: 1 }} 
                         
                       /> Profile
-                    </MenuItem>
+                    </MenuItem> */}
                     
-                    <Divider sx={{ borderColor: "black" }} />
+                    {/* <Divider sx={{ borderColor: "black" }} /> */}
 
                       {user.labels?.includes("admin") && (
                         <MenuItem component={Link as any} href="/admin/menu" onClick={() => setUserMenuAnchor(null)}>
                           <AdminPanelSettingsIcon sx={{mr : 1}} />Admin Panel
                         </MenuItem>
                       )}
-                      <MenuItem component={Link as any} href="/change-password" onClick={()=> setUserMenuAnchor(null)}>
+                      {/* <MenuItem component={Link as any} href="/change-password" onClick={()=> setUserMenuAnchor(null)}>
                         <LockResetIcon sx={{mr:1}} /> Change Password
-                      </MenuItem>
+                      </MenuItem> */}
 
 
                       <Divider sx={{borderColor: "black"}}/>

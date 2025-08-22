@@ -10,7 +10,7 @@ export const searchMenus = async (query: string) => {
 
   try {
     const res = await databases.listDocuments(DB_ID, COLLECTION_ID, [
-      Query.search("name", query), // ✅ full text search
+      Query.search("name", query), 
     ]);
 
     return res.documents.map((doc) => ({
