@@ -479,7 +479,7 @@ const MenuPage: FC = () => {
                         fontSize: "1.25rem"
                       }}
                     >
-                      {dish.price ? `$${dish.price}` : "Price N/A"}
+                      {dish.price ? `₹${dish.price}` : "Price N/A"}
                     </Typography>
 
                     {(dish.type || dish.nation) && (
