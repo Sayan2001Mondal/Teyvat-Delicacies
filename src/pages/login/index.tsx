@@ -57,7 +57,7 @@ export default function Login() {
     setIsLoading(true);
     try {
       await account.createEmailPasswordSession(data.email, data.password);
-      toast.success("Login successful! Welcome back!");
+      toast.success("Login successful! Welcome!");
       router.push("/");
     } catch (err: any) {
       toast.error(err.message || "Login failed. Please check your credentials.");
@@ -119,7 +119,7 @@ export default function Login() {
             {/* Header */}
             <Box
               sx={{
-                background: "linear-gradient(135deg, #ff3d00 0%, #ff6333 100%)",
+                background: "linear-gradient(180deg, #0f766e 0%, #14b8a6 100%)",
                 color: "white",
                 py: { xs: 3, sm: 4 },
                 textAlign: "center",
@@ -131,7 +131,7 @@ export default function Login() {
                 fontWeight={800}
                 gutterBottom
               >
-                Welcome Back!
+                Welcome!
               </Typography>
               <Typography
                 variant="body2"
@@ -160,21 +160,21 @@ export default function Login() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <EmailIcon sx={{ color: "#ff3d00" }} />
+                        <EmailIcon sx={{ color: "#" }} />
                       </InputAdornment>
                     ),
                   }}
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       "&:hover fieldset": {
-                        borderColor: "#ff3d00",
+                        borderColor: "#0f766e",
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: "#ff3d00",
+                        borderColor: "#0f766e",
                       },
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#ff3d00",
+                      color: "#0f766e",
                     },
                   }}
                 />
@@ -191,7 +191,7 @@ export default function Login() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <LockIcon sx={{ color: "#ff3d00" }} />
+                        <LockIcon sx={{ color: "#0f766e" }} />
                       </InputAdornment>
                     ),
                     endAdornment: (
@@ -209,14 +209,14 @@ export default function Login() {
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       "&:hover fieldset": {
-                        borderColor: "#ff3d00",
+                        borderColor: "#0f766e",
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: "#ff3d00",
+                        borderColor: "#0f766e",
                       },
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#ff3d00",
+                      color: "#0f766e",
                     },
                   }}
                 />
@@ -228,7 +228,7 @@ export default function Login() {
                   disabled={isLoading}
                   startIcon={<LoginIcon />}
                   sx={{
-                    background: "linear-gradient(135deg, #ff3d00 0%, #ff6333 100%)",
+                    background: "linear-gradient(180deg, #0f766e 0%, #14b8a6 100%)",
                     color: "white",
                     py: 1.5,
                     borderRadius: "30px",
@@ -236,7 +236,7 @@ export default function Login() {
                     fontSize: { xs: "0.9rem", sm: "1rem" },
                     textTransform: "none",
                     "&:hover": {
-                      background: "linear-gradient(135deg, #ff6333 0%, #ff8a50 100%)",
+                      background: "linear-gradient(180deg, #0f766e 0%, #14b8a6 100%)",
                       transform: "translateY(-1px)",
                       boxShadow: "0 6px 20px rgba(255, 61, 0, 0.3)",
                     },
@@ -265,15 +265,15 @@ export default function Login() {
                   variant="outlined"
                   startIcon={<PersonAddIcon />}
                   sx={{
-                    color: "#ff3d00",
-                    borderColor: "#ff3d00",
+                    color: "#0f766e",
+                    borderColor: "#0f766e",
                     py: 1.25,
                     borderRadius: "30px",
                     fontWeight: 600,
                     fontSize: { xs: "0.9rem", sm: "1rem" },
                     textTransform: "none",
                     "&:hover": {
-                      borderColor: "#ff6333",
+                      borderColor: "#0f766e",
                       background: "rgba(255, 61, 0, 0.05)",
                       transform: "translateY(-1px)",
                     },
@@ -290,12 +290,12 @@ export default function Login() {
                     href="/forgot-password"
                     variant="body2"
                     sx={{
-                      color: "#ff3d00",
+                      color: "#0f766e",
                       textDecoration: "none",
                       fontSize: "0.85rem",
                       "&:hover": {
                         textDecoration: "underline",
-                        color: "#ff6333",
+                        color: "#0f766e",
                       },
                     }}
                   >
@@ -318,14 +318,14 @@ export default function Login() {
                 By signing in, you agree to our{" "}
                 <Typography
                   component="span"
-                  sx={{ color: "#ff3d00", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
+                  sx={{ color: "#0f766e", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
                 >
                   Terms of Service
                 </Typography>{" "}
                 and{" "}
                 <Typography
                   component="span"
-                  sx={{ color: "#ff3d00", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
+                  sx={{ color: "#0f766e", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
                 >
                   Privacy Policy
                 </Typography>

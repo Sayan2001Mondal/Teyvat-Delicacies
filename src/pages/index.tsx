@@ -5,7 +5,7 @@ import { Box, Container, Typography, Button, Stack, useTheme, useMediaQuery } fr
 import Link from "next/link";
 import Splide from "@splidejs/splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
-import SteakImg from  "../../public/images/steak-frites.jpg"
+import SteakImg from "../../public/images/steak-frites.jpg";
 import "@splidejs/splide/dist/css/splide.min.css";
 
 const foodImages = [
@@ -24,7 +24,6 @@ export default function HomePage() {
   const isLg = useMediaQuery(theme.breakpoints.only("lg"));
   const isXl = useMediaQuery(theme.breakpoints.up("xl"));
 
-  // initialize Splide after render
   useEffect(() => {
     const splide = new Splide(".splide", {
       type: "loop",
@@ -38,7 +37,6 @@ export default function HomePage() {
     });
 
     splide.mount({ AutoScroll });
-
     return () => {
       splide.destroy();
     };
@@ -60,22 +58,37 @@ export default function HomePage() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           color: "white",
+          position: "relative",
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            inset: 0,
+            background: "rgba(0,0,0,0.45)", // dark overlay for readability
+          },
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2 }}>
           <Typography
             variant={isXs ? "h4" : isSm ? "h3" : isMd ? "h2" : "h1"}
             fontWeight={800}
-            color="#beb5ce"
             gutterBottom
-            className = "bordered-text" 
+            sx={{
+              color: "white",
+              textShadow: "2px 3px 6px rgba(251, 113, 133, 0.7)", // coral glow
+            }}
           >
             Welcome to FoodZone 🍴
           </Typography>
+
           <Typography
             variant={isXs ? "body1" : "h6"}
-            sx={{ maxWidth: "700px", mx: "auto", opacity: 0.9, color: "#fff", fontWeight: "600",  }
-          }
+            sx={{
+              maxWidth: "700px",
+              mx: "auto",
+              opacity: 0.95,
+              color: "rgba(255,255,255,0.9)",
+              fontWeight: 500,
+            }}
             gutterBottom
           >
             Delicious meals delivered fresh to your doorstep. Explore our menu and discover your next favorite dish!
@@ -87,15 +100,15 @@ export default function HomePage() {
               component={Link as any}
               href="/menu"
               sx={{
-                background: "white",
-                color: "black",
+                background: "#fb7185", // coral
+                color: "white",
                 px: { xs: 3, sm: 4 },
                 py: { xs: 1, sm: 1.5 },
                 borderRadius: "30px",
                 fontWeight: 600,
                 fontSize: { xs: "0.9rem", sm: "1rem" },
                 textTransform: "none",
-                ":hover": { background: "#ffe0b2" },
+                ":hover": { background: "#f43f5e" }, // darker coral
               }}
             >
               Explore Menu
@@ -104,7 +117,7 @@ export default function HomePage() {
               component={Link as any}
               href="/about"
               sx={{
-                border: "2px solid white",
+                border: "2px solid #14b8a6", // teal border
                 color: "white",
                 px: { xs: 3, sm: 4 },
                 py: { xs: 1, sm: 1.5 },
@@ -112,7 +125,9 @@ export default function HomePage() {
                 fontWeight: 600,
                 fontSize: { xs: "0.9rem", sm: "1rem" },
                 textTransform: "none",
-                ":hover": { background: "rgba(255,255,255,0.1)" },
+                ":hover": {
+                  background: "rgba(20, 184, 166, 0.15)", // subtle teal hover
+                },
               }}
             >
               Learn More
@@ -121,20 +136,20 @@ export default function HomePage() {
         </Container>
       </Box>
 
-      {/* Food Showcase with Splide */}
-      <Box sx={{ py: { xs: 4, sm: 6 }, background: "#fafafa" }}>
+      {/* Food Showcase */}
+      <Box sx={{ py: { xs: 4, sm: 6 }, background: "rgba(20,184,166,0.05)" }}>
         <Typography
           variant="h4"
           align="center"
           fontWeight={700}
           gutterBottom
-          color="black"
+          color="#0f766e" // teal heading
           sx={{ fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
         >
           Our Specialties
         </Typography>
 
-        <Container maxWidth  ="">
+        <Container maxWidth="">
           <div className="splide">
             <div className="splide__track">
               <ul className="splide__list">
@@ -150,6 +165,11 @@ export default function HomePage() {
                         objectFit: "cover",
                         borderRadius: 3,
                         boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          transform: "scale(1.03)",
+                          boxShadow: "0 6px 18px rgba(15, 118, 110, 0.4)", // teal shadow
+                        },
                       }}
                     />
                   </li>

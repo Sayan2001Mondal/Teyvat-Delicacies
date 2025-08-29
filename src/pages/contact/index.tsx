@@ -140,7 +140,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <Box
         sx={{
-          background: "linear-gradient(135deg, #ff3d00 0%, #ff6333 100%)",
+          background: "linear-gradient(180deg, #0f766e 0%, #14b8a6 100%)",
           py: { xs: 4, sm: 6, md: 8 },
           color: "white",
           textAlign: "center",
@@ -217,7 +217,7 @@ export default function ContactPage() {
                   <Stack direction="row" spacing={2} alignItems="flex-start">
                     <Box
                       sx={{
-                        background: "#ff3d00",
+                        background: "#0f766e",
                         color: "white",
                         p: { xs: 1, sm: 1.5 },
                         borderRadius: "50%",
@@ -299,21 +299,21 @@ export default function ContactPage() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <PersonIcon sx={{ color: "#ff3d00", fontSize: { xs: 20, sm: 24 } }} />
+                        <PersonIcon sx={{ color: "#", fontSize: { xs: 20, sm: 24 } }} />
                       </InputAdornment>
                     ),
                   }}
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       "&:hover fieldset": {
-                        borderColor: "#ff3d00",
+                        borderColor: "#0f766e",
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: "#ff3d00",
+                        borderColor: "#0f766e",
                       },
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#ff3d00",
+                      color: "#0f766e",
                     },
                   }}
                 />
@@ -329,21 +329,21 @@ export default function ContactPage() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <EmailIcon sx={{ color: "#ff3d00", fontSize: { xs: 20, sm: 24 } }} />
+                        <EmailIcon sx={{ color: "#0f766e", fontSize: { xs: 20, sm: 24 } }} />
                       </InputAdornment>
                     ),
                   }}
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       "&:hover fieldset": {
-                        borderColor: "#ff3d00",
+                        borderColor: "#0f766e",
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: "#ff3d00",
+                        borderColor: "#0f766e",
                       },
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#ff3d00",
+                      color: "#0f766e",
                     },
                   }}
                 />
@@ -363,21 +363,21 @@ export default function ContactPage() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <PhoneIcon sx={{ color: "#ff3d00", fontSize: { xs: 20, sm: 24 } }} />
+                        <PhoneIcon sx={{ color: "#0f766e", fontSize: { xs: 20, sm: 24 } }} />
                       </InputAdornment>
                     ),
                   }}
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       "&:hover fieldset": {
-                        borderColor: "#ff3d00",
+                        borderColor: "#0f766e",
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: "#ff3d00",
+                        borderColor: "#0f766e",
                       },
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#ff3d00",
+                      color: "#0f766e",
                     },
                   }}
                 />
@@ -392,14 +392,14 @@ export default function ContactPage() {
                   sx={{
                     "& .MuiOutlinedInput-root": {
                       "&:hover fieldset": {
-                        borderColor: "#ff3d00",
+                        borderColor: "#0f766e",
                       },
                       "&.Mui-focused fieldset": {
-                        borderColor: "#ff3d00",
+                        borderColor: "#0f766e",
                       },
                     },
                     "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#ff3d00",
+                      color: "#0f766e",
                     },
                   }}
                 />
@@ -418,21 +418,21 @@ export default function ContactPage() {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start" sx={{ alignSelf: "flex-start", mt: { xs: 1.5, sm: 2 } }}>
-                      <MessageIcon sx={{ color: "#ff3d00", fontSize: { xs: 20, sm: 24 } }} />
+                      <MessageIcon sx={{ color: "#0f766e", fontSize: { xs: 20, sm: 24 } }} />
                     </InputAdornment>
                   ),
                 }}
                 sx={{
                   "& .MuiOutlinedInput-root": {
                     "&:hover fieldset": {
-                      borderColor: "#ff3d00",
+                      borderColor: "#0f766e",
                     },
                     "&.Mui-focused fieldset": {
-                      borderColor: "#ff3d00",
+                      borderColor: "#0f766e",
                     },
                   },
                   "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#ff3d00",
+                    color: "#0f766e",
                   },
                 }}
               />
@@ -444,7 +444,7 @@ export default function ContactPage() {
                 disabled={loading}
                 endIcon={<SendIcon />}
                 sx={{
-                  background: "#ff3d00",
+                  background: "#0f766e",
                   color: "white",
                   py: { xs: 1.25, sm: 1.5 },
                   borderRadius: "30px",
@@ -452,7 +452,7 @@ export default function ContactPage() {
                   fontSize: { xs: "0.9rem", sm: "1rem" },
                   textTransform: "none",
                   "&:hover": {
-                    background: "#ff6333",
+                    background: "##0f766e",
                   },
                   "&:disabled": {
                     background: "rgba(255, 61, 0, 0.5)",
@@ -508,7 +508,7 @@ export default function ContactPage() {
                 <Marker position={[restaurantLocation.lat, restaurantLocation.lng]}>
                   <Popup>
                     <Box sx={{ textAlign: "center", p: 1 }}>
-                      <RestaurantIcon sx={{ color: "#ff3d00", fontSize: 24, mb: 1 }} />
+                      <RestaurantIcon sx={{ color: "#0f766e", fontSize: 24, mb: 1 }} />
                       <Typography variant="subtitle1" fontWeight={600} gutterBottom>
                         FoodZone Restaurant
                       </Typography>
@@ -519,7 +519,7 @@ export default function ContactPage() {
                         size="small"
                         sx={{ 
                           mt: 1,
-                          color: "#ff3d00",
+                          color: "#0f766e",
                           textTransform: "none",
                           fontWeight: 600
                         }}
@@ -551,7 +551,7 @@ export default function ContactPage() {
                   gap: 2
                 }}
               >
-                <LocationOnIcon sx={{ fontSize: 40, color: "#ff3d00" }} />
+                <LocationOnIcon sx={{ fontSize: 40, color: "#0f766e" }} />
                 <Typography>Loading Interactive Map...</Typography>
               </Box>
             )}
@@ -618,7 +618,7 @@ export default function ContactPage() {
                   >
                     <Box
                       sx={{
-                        background: "linear-gradient(135deg, #ff3d00, #ff6333)",
+                        background: "linear-gradient(180deg, #0f766e 0%, #14b8a6 100%)",
                         width: { xs: 50, sm: 60 },
                         height: { xs: 50, sm: 60 },
                         borderRadius: "50%",

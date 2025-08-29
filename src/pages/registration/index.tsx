@@ -53,7 +53,7 @@ interface RegisterFormData {
 export default function Register() {
   const router = useRouter();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -120,7 +120,7 @@ export default function Register() {
               maxWidth: 450,
               background: "rgba(255, 255, 255, 0.95)",
               backdropFilter: "blur(20px)",
-              border: "1px solid rgba(255, 61, 0, 0.2)",
+              border: "1px solid rgba(15, 118, 110, 0.2)",
               borderRadius: 4,
               overflow: "hidden",
             }}
@@ -128,7 +128,7 @@ export default function Register() {
             {/* Header */}
             <Box
               sx={{
-                background: "linear-gradient(135deg, #ff3d00 0%, #ff6333 100%)",
+                background: "linear-gradient(135deg, #0f766e 0%, #14b8a6 100%)",
                 color: "white",
                 py: { xs: 3, sm: 4 },
                 textAlign: "center",
@@ -168,22 +168,16 @@ export default function Register() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <PersonIcon sx={{ color: "#ff3d00" }} />
+                        <PersonIcon sx={{ color: "#0f766e" }} />
                       </InputAdornment>
                     ),
                   }}
                   sx={{
                     "& .MuiOutlinedInput-root": {
-                      "&:hover fieldset": {
-                        borderColor: "#ff3d00",
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#ff3d00",
-                      },
+                      "&:hover fieldset": { borderColor: "#0f766e" },
+                      "&.Mui-focused fieldset": { borderColor: "#0f766e" },
                     },
-                    "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#ff3d00",
-                    },
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#0f766e" },
                   }}
                 />
 
@@ -199,30 +193,21 @@ export default function Register() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <EmailIcon sx={{ color: "#ff3d00" }} />
+                        <EmailIcon sx={{ color: "#0f766e" }} />
                       </InputAdornment>
                     ),
                   }}
                   sx={{
                     "& .MuiOutlinedInput-root": {
-                      "&:hover fieldset": {
-                        borderColor: "#ff3d00",
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#ff3d00",
-                      },
+                      "&:hover fieldset": { borderColor: "#0f766e" },
+                      "&.Mui-focused fieldset": { borderColor: "#0f766e" },
                     },
-                    "& .MuiInputLabel-root.Mui-focused": {
-                      color: "#ff3d00",
-                    },
+                    "& .MuiInputLabel-root.Mui-focused": { color: "#0f766e" },
                   }}
                 />
 
                 {/* Password Fields Row */}
-                <Stack 
-                  direction={{ xs: "column", sm: "row" }} 
-                  spacing={{ xs: 3, sm: 2 }}
-                >
+                <Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 3, sm: 2 }}>
                   {/* Password Field */}
                   <TextField
                     fullWidth
@@ -235,7 +220,7 @@ export default function Register() {
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <LockIcon sx={{ color: "#ff3d00" }} />
+                          <LockIcon sx={{ color: "#0f766e" }} />
                         </InputAdornment>
                       ),
                       endAdornment: (
@@ -253,16 +238,10 @@ export default function Register() {
                     }}
                     sx={{
                       "& .MuiOutlinedInput-root": {
-                        "&:hover fieldset": {
-                          borderColor: "#ff3d00",
-                        },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#ff3d00",
-                        },
+                        "&:hover fieldset": { borderColor: "#0f766e" },
+                        "&.Mui-focused fieldset": { borderColor: "#0f766e" },
                       },
-                      "& .MuiInputLabel-root.Mui-focused": {
-                        color: "#ff3d00",
-                      },
+                      "& .MuiInputLabel-root.Mui-focused": { color: "#0f766e" },
                     }}
                   />
 
@@ -278,7 +257,7 @@ export default function Register() {
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <VerifiedUserIcon sx={{ color: "#ff3d00" }} />
+                          <VerifiedUserIcon sx={{ color: "#0f766e" }} />
                         </InputAdornment>
                       ),
                       endAdornment: (
@@ -296,16 +275,10 @@ export default function Register() {
                     }}
                     sx={{
                       "& .MuiOutlinedInput-root": {
-                        "&:hover fieldset": {
-                          borderColor: "#ff3d00",
-                        },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "#ff3d00",
-                        },
+                        "&:hover fieldset": { borderColor: "#0f766e" },
+                        "&.Mui-focused fieldset": { borderColor: "#0f766e" },
                       },
-                      "& .MuiInputLabel-root.Mui-focused": {
-                        color: "#ff3d00",
-                      },
+                      "& .MuiInputLabel-root.Mui-focused": { color: "#0f766e" },
                     }}
                   />
                 </Stack>
@@ -317,7 +290,7 @@ export default function Register() {
                   disabled={isLoading}
                   startIcon={<PersonAddIcon />}
                   sx={{
-                    background: "linear-gradient(135deg, #ff3d00 0%, #ff6333 100%)",
+                    background: "linear-gradient(135deg, #0f766e 0%, #14b8a6 100%)",
                     color: "white",
                     py: 1.5,
                     borderRadius: "30px",
@@ -325,12 +298,12 @@ export default function Register() {
                     fontSize: { xs: "0.9rem", sm: "1rem" },
                     textTransform: "none",
                     "&:hover": {
-                      background: "linear-gradient(135deg, #ff6333 0%, #ff8a50 100%)",
+                      background: "linear-gradient(135deg, #14b8a6 0%, #0d9488 100%)",
                       transform: "translateY(-1px)",
-                      boxShadow: "0 6px 20px rgba(255, 61, 0, 0.3)",
+                      boxShadow: "0 6px 20px rgba(15, 118, 110, 0.3)",
                     },
                     "&:disabled": {
-                      background: "rgba(255, 61, 0, 0.5)",
+                      background: "rgba(15, 118, 110, 0.5)",
                       color: "rgba(255, 255, 255, 0.7)",
                     },
                     transition: "all 0.2s ease",
@@ -354,16 +327,16 @@ export default function Register() {
                   variant="outlined"
                   startIcon={<LoginIcon />}
                   sx={{
-                    color: "#ff3d00",
-                    borderColor: "#ff3d00",
+                    color: "#fb7185",
+                    borderColor: "#fb7185",
                     py: 1.25,
                     borderRadius: "30px",
                     fontWeight: 600,
                     fontSize: { xs: "0.9rem", sm: "1rem" },
                     textTransform: "none",
                     "&:hover": {
-                      borderColor: "#ff6333",
-                      background: "rgba(255, 61, 0, 0.05)",
+                      borderColor: "#fb7185",
+                      background: "rgba(251, 113, 133, 0.05)",
                       transform: "translateY(-1px)",
                     },
                     transition: "all 0.2s ease",
@@ -387,14 +360,14 @@ export default function Register() {
                 By creating an account, you agree to our{" "}
                 <Typography
                   component="span"
-                  sx={{ color: "#ff3d00", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
+                  sx={{ color: "#fb7185", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
                 >
                   Terms of Service
                 </Typography>{" "}
                 and{" "}
                 <Typography
                   component="span"
-                  sx={{ color: "#ff3d00", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
+                  sx={{ color: "#fb7185", cursor: "pointer", "&:hover": { textDecoration: "underline" } }}
                 >
                   Privacy Policy
                 </Typography>

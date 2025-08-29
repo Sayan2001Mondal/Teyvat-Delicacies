@@ -17,7 +17,7 @@ export default function MenuDetail() {
         setItem({
           ...doc,
           imageUrl: doc.imageUrl
-            ? storage.getFilePreview(BUCKET_ID, doc.imageUrl).href
+            ? storage.getFilePreview(BUCKET_ID, doc.imageUrl)
             : null,
         });
       });

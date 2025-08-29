@@ -79,7 +79,7 @@ const MenuPage: FC = () => {
     localStorage.setItem("genshin-cart", JSON.stringify(updatedCart));
   };
 
-  const { data, isLoading, isError, error } = useQuery<Dish[]>({
+  const { data, isLoading, isError } = useQuery<Dish[]>({
     queryKey: ["foods"],
     queryFn: async () => {
       const res = await appwriteDatabases.listDocuments<Dish>(
@@ -204,7 +204,7 @@ const MenuPage: FC = () => {
       {/* Hero Section */}
       <Box
         sx={{
-          background: "linear-gradient(135deg, #ff3d00 0%, #ff6333 100%)",
+          background: "linear-gradient(180deg, #0f766e 0%, #14b8a6 100%)",
           color: "white",
           py: { xs: 6, sm: 8, md: 10 },
           position: "relative",
@@ -290,12 +290,12 @@ const MenuPage: FC = () => {
                 onClick={() => handleCategoryChange(category)}
                 variant={selectedCategory === category ? "filled" : "outlined"}
                 sx={{
-                  backgroundColor: selectedCategory === category ? "#ff3d00" : "transparent",
-                  color: selectedCategory === category ? "white" : "#ff3d00",
+                  backgroundColor: selectedCategory === category ? " #0f766e" : "transparent",
+                  color: selectedCategory === category ? "white" : " #0f766e",
                   borderColor: "#ff3d00",
                   fontWeight: 600,
                   "&:hover": {
-                    backgroundColor: selectedCategory === category ? "#ff3d00" : "rgba(255, 61, 0, 0.08)",
+                    backgroundColor: selectedCategory === category ? " #0f766e" : "rgba(255, 61, 0, 0.08)",
                   }
                 }}
               />
@@ -319,7 +319,7 @@ const MenuPage: FC = () => {
               justifyContent="space-between"
               spacing={2}
             >
-              <Typography variant="h6" color="#ff3d00" fontWeight={700}>
+              <Typography variant="h6" color=" #0f766e" fontWeight={700}>
                 🛒 {totalCartItems} item{totalCartItems !== 1 ? "s" : ""} in cart
               </Typography>
               <Button
@@ -327,7 +327,7 @@ const MenuPage: FC = () => {
                 onClick={() => router.push("/cart")}
                 startIcon={<ShoppingCartIcon />}
                 sx={{
-                  background: "#ff3d00",
+                  background: " #0f766e",
                   color: "white",
                   px: 4,
                   py: 1.5,
@@ -336,7 +336,7 @@ const MenuPage: FC = () => {
                   textTransform: "none",
                   boxShadow: "0 4px 12px rgba(255, 61, 0, 0.3)",
                   "&:hover": {
-                    background: "#e53600",
+                    background: " #0f766e",
                     boxShadow: "0 6px 16px rgba(255, 61, 0, 0.4)",
                   }
                 }}
@@ -428,7 +428,7 @@ const MenuPage: FC = () => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        background: "linear-gradient(135deg, #ff3d00 0%, #ff6333 100%)",
+                        background: "linear-gradient(180deg, #0f766e 0%, #14b8a6 100%)",
                         color: "white"
                       }}
                     >
@@ -474,7 +474,7 @@ const MenuPage: FC = () => {
                       variant="h6" 
                       fontWeight={700}
                       sx={{ 
-                        color: "#ff3d00", 
+                        color: "#0f766e", 
                         mb: 2,
                         fontSize: "1.25rem"
                       }}
@@ -490,7 +490,7 @@ const MenuPage: FC = () => {
                             size="small" 
                             sx={{ 
                               backgroundColor: "#fff3e0",
-                              color: "#ff3d00",
+                              color: "#0f766e",
                               fontWeight: 500
                             }} 
                           />
@@ -519,7 +519,7 @@ const MenuPage: FC = () => {
                           disabled={!cart[dish.$id]}
                           sx={{
                             backgroundColor: "#ffebee",
-                            color: "#ff3d00",
+                            color: "#0f766e",
                             "&:hover": {
                               backgroundColor: "#ffcdd2",
                             },
@@ -538,7 +538,7 @@ const MenuPage: FC = () => {
                           sx={{ 
                             minWidth: 30, 
                             textAlign: "center",
-                            color: "#ff3d00"
+                            color: "#0f766e"
                           }}
                         >
                           {cart[dish.$id] || 0}
@@ -550,10 +550,10 @@ const MenuPage: FC = () => {
                             handleQuantityChange(dish.$id, 1);
                           }}
                           sx={{
-                            backgroundColor: "#ff3d00",
+                            backgroundColor: "#0f766e",
                             color: "white",
                             "&:hover": {
-                              backgroundColor: "#e53600",
+                              backgroundColor: "#0f766e",
                             }
                           }}
                         >
@@ -591,12 +591,12 @@ const MenuPage: FC = () => {
               size={isXs ? "small" : "medium"}
               sx={{
                 "& .MuiPaginationItem-root": {
-                  color: "#ff3d00",
+                  color: "#0f766e",
                   "&.Mui-selected": {
-                    backgroundColor: "#ff3d00",
+                    backgroundColor: "#0f766e",
                     color: "white",
                     "&:hover": {
-                      backgroundColor: "#e53600",
+                      backgroundColor: "#0f766e",
                     }
                   },
                   "&:hover": {
@@ -617,13 +617,13 @@ const MenuPage: FC = () => {
             position: "fixed",
             bottom: { xs: 20, sm: 30 },
             right: { xs: 20, sm: 30 },
-            backgroundColor: "#ff3d00",
+            backgroundColor: "#0f766e",
             color: "white",
             zIndex: 1000,
             boxShadow: "0 8px 24px rgba(255, 61, 0, 0.3)",
             "&:hover": {
-              backgroundColor: "#e53600",
-              boxShadow: "0 12px 32px rgba(255, 61, 0, 0.4)",
+              backgroundColor: "#0f766e",
+              boxShadow: " 0 12px 32px rgba(255, 61, 0, 0.4)",
             }
           }}
         >

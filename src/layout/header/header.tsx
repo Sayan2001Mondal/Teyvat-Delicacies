@@ -140,12 +140,12 @@ const Header = (props: HeaderProps) => {
             startIcon={mobile ? <IconComponent /> : undefined}
             onClick={() => mobile && setMobileOpen(false)}
             sx={{
-              color: "black",
+              color: "white",
               fontWeight: isActive ? 700 : 500,
               textUnderlinePosition: "under", 
               fontSize: mobile ? "1.05rem" : "1rem",
               textDecoration: isActive ? "underline" : "none",
-              textDecorationColor: isActive ? (mobile ? "#ff3d00" : "#961c59ff") : "transparent",
+              textDecorationColor: isActive ? (mobile ? "#fb7185" : "#fb7185") : "transparent", // Coral accent
               px: mobile ? 2 : 2.25,
               py: mobile ? 1.25 : 0.75,
               mx: mobile ? 0 : 0.25,
@@ -155,12 +155,13 @@ const Header = (props: HeaderProps) => {
               width: mobile ? "100%" : "auto",
               transition: "all 0.2s ease",
               "&:hover": {
-                color: mobile ? "#ff3d00" : "#961c59ff",
+                color: mobile ? "#fb7185" : "#fb7185", // Coral hover
+                background: mobile ? "rgba(251, 113, 133, 0.1)" : "transparent",
               },
               ...(isActive &&
                 mobile && {
-                  background: "rgba(255, 61, 0, 0.1)",
-                  borderLeft: "4px solid #ff3d00",
+                  background: "rgba(251, 113, 133, 0.15)", // Coral background for active mobile
+                  borderLeft: "4px solid #fb7185", // Coral left border
                 }),
             }}
           >
@@ -176,7 +177,8 @@ const Header = (props: HeaderProps) => {
       <AppBar
         position="sticky"
         sx={{
-          background: "#ff3d00"
+          background: "linear-gradient(135deg, #0f766e 0%, #14b8a6 100%)", // Teal gradient
+          boxShadow: "0 4px 20px rgba(15, 118, 110, 0.3)", // Teal shadow
         }}
       >
         <Toolbar
@@ -208,7 +210,10 @@ const Header = (props: HeaderProps) => {
                 flexShrink: 0,
               }}
             >
-              <RestaurantIcon sx={{ fontSize: { xs: 24, sm: 26 }, color: "black" }} />
+              <RestaurantIcon sx={{ 
+                fontSize: { xs: 24, sm: 26 }, 
+                color: "#fb7185" // Coral icon
+              }} />
             </Box>
 
             <Box sx={{ minWidth: 0 }}>
@@ -216,7 +221,7 @@ const Header = (props: HeaderProps) => {
                 sx={{
                   fontWeight: 800,
                   backgroundClip: "text",
-                  color: "black",
+                  color: "white",
                   fontSize: { xs: "1.45rem", sm: "1.7rem", md: "1.9rem" },
                   lineHeight: 1,
                   whiteSpace: "nowrap",
@@ -228,7 +233,7 @@ const Header = (props: HeaderProps) => {
                 sx={{
                   display: { xs: "none", md: "block", lg: "block" },
                   fontSize: { md: "0.72rem", lg: "0.8rem" },
-                  color: "black",
+                  color: "rgba(255, 255, 255, 0.8)",
                   fontWeight: 500,
                   letterSpacing: 2,
                   opacity: 0.9,
@@ -253,8 +258,23 @@ const Header = (props: HeaderProps) => {
               <SearchInput />
 
               {/* Cart */}
-              <IconButton onClick={handleCartClick} sx={{ color: "black", flexShrink: 0 }}>
-                <Badge badgeContent={cartItems} color="error">
+              <IconButton onClick={handleCartClick} sx={{ 
+                color: "white",
+                flexShrink: 0,
+                "&:hover": {
+                  color: "#fb7185", // Coral hover
+                  background: "rgba(251, 113, 133, 0.1)",
+                }
+              }}>
+                <Badge 
+                  badgeContent={cartItems} 
+                  sx={{
+                    '& .MuiBadge-badge': {
+                      backgroundColor: '#fb7185', // Coral badge
+                      color: 'white',
+                    }
+                  }}
+                >
                   <ShoppingCartIcon />
                 </Badge>
               </IconButton>
@@ -266,15 +286,15 @@ const Header = (props: HeaderProps) => {
                     onClick={(e) => setUserMenuAnchor(e.currentTarget)}
                     endIcon={<KeyboardArrowDownIcon />}
                     sx={{
-                      color: "black",
-                      background: "rgba(150, 28, 89, 0.2)",
-                      border: "1px solid rgba(150, 28, 89, 0.3)",
+                      color: "white",
+                      background: "rgba(251, 113, 133, 0.2)", // Coral background
+                      border: "1px solid rgba(251, 113, 133, 0.4)", // Coral border
                       borderRadius: "22px",
                       px: 2,
                       textTransform: "none",
                       flexShrink: 0,
                       "&:hover": {
-                        background: "rgba(150, 28, 89, 0.3)",
+                        background: "rgba(251, 113, 133, 0.3)", // Coral hover
                       }
                     }}
                   >
@@ -284,6 +304,8 @@ const Header = (props: HeaderProps) => {
                         height: 24,
                         mr: 1,
                         fontSize: "0.8rem",
+                        backgroundColor: "#fb7185", // Coral avatar
+                        color: "white",
                       }}
                     >
                       {user.name?.[0]?.toUpperCase() || user.email?.[0]?.toUpperCase()}
@@ -310,47 +332,40 @@ const Header = (props: HeaderProps) => {
                     PaperProps={{
                       sx: {
                         background: "white",
-                        
-                        border: "1px solid black",
-                        
+                        border: "1px solid #0f766e", // Teal border
                         mt: 1,
+                        borderRadius: 2,
                       },
                     }}
                   >
-                    {/* <MenuItem component= {Link as any} href = "/profile"
-                      onClick={() => setUserMenuAnchor(null)}
-                      sx={{ 
-                        color: "black", 
-                        "&:hover": { background: "rgba(255, 207, 108, 0.1)" } 
-                      }}
-                    >
-                      <PersonIcon  sx={{ mr: 1 }} 
-                        
-                      /> Profile
-                    </MenuItem> */}
-                    
-                    {/* <Divider sx={{ borderColor: "black" }} /> */}
+                    {user.labels?.includes("admin") && (
+                      <MenuItem 
+                        component={Link as any} 
+                        href="/admin/menu" 
+                        onClick={() => setUserMenuAnchor(null)}
+                        sx={{
+                          color: "#0f766e", // Teal text
+                          "&:hover": { 
+                            background: "rgba(251, 113, 133, 0.1)" // Coral hover
+                          }
+                        }}
+                      >
+                        <AdminPanelSettingsIcon sx={{mr : 1, color: "#fb7185"}} />Admin Panel
+                      </MenuItem>
+                    )}
 
-                      {user.labels?.includes("admin") && (
-                        <MenuItem component={Link as any} href="/admin/menu" onClick={() => setUserMenuAnchor(null)}>
-                          <AdminPanelSettingsIcon sx={{mr : 1}} />Admin Panel
-                        </MenuItem>
-                      )}
-                      {/* <MenuItem component={Link as any} href="/change-password" onClick={()=> setUserMenuAnchor(null)}>
-                        <LockResetIcon sx={{mr:1}} /> Change Password
-                      </MenuItem> */}
-
-
-                      <Divider sx={{borderColor: "black"}}/>
+                    <Divider sx={{borderColor: "#0f766e"}}/>
 
                     <MenuItem
                       onClick={handleLogout}
                       sx={{ 
-                        color: "black", 
-                        "&:hover": { background: "rgba(255, 207, 108, 0.1)" } 
+                        color: "#0f766e", // Teal text
+                        "&:hover": { 
+                          background: "rgba(251, 113, 133, 0.1)" // Coral hover
+                        } 
                       }}
                     >
-                      <LogoutIcon sx={{ mr: 1 }} /> Logout
+                      <LogoutIcon sx={{ mr: 1, color: "#fb7185" }} /> Logout
                     </MenuItem>
                   </Menu>
                 </>
@@ -361,17 +376,18 @@ const Header = (props: HeaderProps) => {
                     href="/login"
                     startIcon={<LoginIcon />}
                     sx={{
-                      color: "black",
-                      boxShadow: "5px 12px 5px 5px rgba(190, 75, 75, 0)",
-                      border: "1px solid black",
-                      transition: "all 1s fade-in-out",
+                      color: "white",
+                      boxShadow: "none",
+                      border: "1px solid rgba(255, 255, 255, 0.3)",
+                      transition: "all 0.3s ease",
                       px: 3,
-                      py: -2,
+                      py: 1,
                       textTransform: "none",
-                      
+                      borderRadius: 2,
                       "&:hover": {
                         cursor: 'pointer',
-                        background: "#ff6333"
+                        background: "rgba(255, 255, 255, 0.1)",
+                        borderColor: "white",
                       }
                     }}
                   >
@@ -383,14 +399,16 @@ const Header = (props: HeaderProps) => {
                     startIcon={<PersonAddIcon />}
                     sx={{
                       color: "white",
-                      border: "1px solid black",
+                      background: "#fb7185", // Coral background
+                      border: "1px solid #fb7185", // Coral border
                       px: 2,
+                      py: 1,
                       textTransform: "none",
-                      
+                      borderRadius: 2,
                       "&:hover": {
                         cursor: "pointer",
-                        background: "white",
-                        color: "black"
+                        background: "#f43f5e", // Darker coral on hover
+                        borderColor: "#f43f5e",
                       }
                     }}
                   >
@@ -404,13 +422,31 @@ const Header = (props: HeaderProps) => {
           {/* Mobile/Tablet Navigation (shown below lg) */}
           {isMobile && (
             <Box sx={{ display: "flex", alignItems: "center", gap: 1, flexShrink: 0 }}>
-              <IconButton onClick={handleCartClick} sx={{ color: "black" }}>
-                <Badge badgeContent={cartItems} color="error">
+              <IconButton onClick={handleCartClick} sx={{ 
+                color: "white",
+                "&:hover": {
+                  color: "#fb7185",
+                }
+              }}>
+                <Badge 
+                  badgeContent={cartItems}
+                  sx={{
+                    '& .MuiBadge-badge': {
+                      backgroundColor: '#fb7185',
+                      color: 'white',
+                    }
+                  }}
+                >
                   <ShoppingCartIcon />
                 </Badge>
               </IconButton>
 
-              <IconButton onClick={() => setMobileOpen(true)} sx={{ color: "black" }}>
+              <IconButton onClick={() => setMobileOpen(true)} sx={{ 
+                color: "white",
+                "&:hover": {
+                  color: "#fb7185",
+                }
+              }}>
                 <MenuIcon />
               </IconButton>
             </Box>
@@ -426,17 +462,22 @@ const Header = (props: HeaderProps) => {
         PaperProps={{
           sx: {
             width: { xs: 280, sm: 320 },
-            background: "linear-gradient(180deg, #ff3d00 0%, #ff6333 100%)",
-            color: "black",
+            background: "linear-gradient(180deg, #0f766e 0%, #14b8a6 100%)", // Teal gradient
+            color: "white",
           },
         }}
       >
         <Box sx={{ p: 3 }}>
           <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 3 }}>
-            <Typography variant="h6" fontWeight={700} color="black">
+            <Typography variant="h6" fontWeight={700} color="white">
               Menu
             </Typography>
-            <IconButton onClick={() => setMobileOpen(false)} sx={{ color: "black" }}>
+            <IconButton onClick={() => setMobileOpen(false)} sx={{ 
+              color: "white",
+              "&:hover": {
+                color: "#fb7185",
+              }
+            }}>
               <CloseIcon />
             </IconButton>
           </Box>
@@ -450,18 +491,18 @@ const Header = (props: HeaderProps) => {
           <NavLinks mobile />
 
           {/* Mobile Auth */}
-          <Box sx={{ mt: 4, pt: 3, borderTop: "1px solid rgba(0, 0, 0, 0.2)" }}>
+          <Box sx={{ mt: 4, pt: 3, borderTop: "1px solid rgba(255, 255, 255, 0.2)" }}>
             {user ? (
               <Box>
                 <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                   <Avatar sx={{ 
-                    background: "black", 
-                    color: "#ff3d00",
+                    background: "#fb7185", // Coral avatar
+                    color: "white",
                     mr: 2 
                   }}>
                     {user.name?.[0]?.toUpperCase() || user.email?.[0]?.toUpperCase()}
                   </Avatar>
-                  <Typography fontWeight={600} color="black">
+                  <Typography fontWeight={600} color="white">
                     {user.name || "User"}
                   </Typography>
                 </Box>
@@ -470,13 +511,13 @@ const Header = (props: HeaderProps) => {
                   onClick={handleLogout}
                   startIcon={<LogoutIcon />}
                   sx={{
-                    color: "black",
-                    border: "1px solid rgba(0, 0, 0, 0.3)",
-                  
+                    color: "white",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
                     py: 1.25,
                     textTransform: "none",
                     "&:hover": {
-                      background: "rgba(0, 0, 0, 0.1)",
+                      background: "rgba(251, 113, 133, 0.2)", // Coral hover
+                      borderColor: "#fb7185",
                     }
                   }}
                 >
@@ -492,13 +533,12 @@ const Header = (props: HeaderProps) => {
                   startIcon={<LoginIcon />}
                   onClick={() => setMobileOpen(false)}
                   sx={{
-                    color: "black",
-                    border: "1px solid rgba(0, 0, 0, 0.3)",
-                    
+                    color: "white",
+                    border: "1px solid rgba(255, 255, 255, 0.3)",
                     py: 1.25,
                     textTransform: "none",
                     "&:hover": {
-                      background: "rgba(0, 0, 0, 0.1)",
+                      background: "rgba(255, 255, 255, 0.1)",
                     }
                   }}
                 >
@@ -511,13 +551,13 @@ const Header = (props: HeaderProps) => {
                   startIcon={<PersonAddIcon />}
                   onClick={() => setMobileOpen(false)}
                   sx={{
-                    background: "black",
-                    color: "#ff3d00",
+                    background: "#fb7185", // Coral background
+                    color: "white",
                     borderRadius: "22px",
                     py: 1.25,
                     textTransform: "none",
                     "&:hover": {
-                      background: "rgba(0, 0, 0, 0.8)",
+                      background: "#f43f5e", // Darker coral
                     }
                   }}
                 >

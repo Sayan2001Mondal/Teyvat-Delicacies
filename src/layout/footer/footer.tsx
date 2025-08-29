@@ -7,12 +7,12 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        background: "black",
-        color: "#ff3d00",
+        background: "#0f172a", // Dark teal
+        color: "#e2e8f0", // Light gray text
         textAlign: "center",
         py: 4,
         mt: 4,
-        borderTop: "2px solid white",
+        borderTop: "2px solid #134e4a", // Subtle teal border
         fontFamily: `'Cinzel', serif`,
       }}
     >
@@ -20,7 +20,7 @@ const Footer = () => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" }, 
+          flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
           alignItems: "flex-start",
           maxWidth: 1200,
@@ -31,7 +31,7 @@ const Footer = () => {
       >
         {/* About Section */}
         <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
-          <Typography variant="h6" gutterBottom sx={{ color: "white", fontWeight: "bold" }}>
+          <Typography variant="h6" gutterBottom sx={{ color: "#fb7185", fontWeight: "bold" }}>
             About FoodZone
           </Typography>
           <Typography variant="body2">
@@ -41,20 +41,20 @@ const Footer = () => {
 
         {/* Quick Links */}
         <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
-          <Typography variant="h6" gutterBottom sx={{ color: "white", fontWeight: "bold" }}>
+          <Typography variant="h6" gutterBottom sx={{ color: "#fb7185", fontWeight: "bold" }}>
             Quick Links
           </Typography>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            <Link href="/menu" color="inherit" underline="hover">
+            <Link href="/menu" underline="hover" sx={{ color: "#e2e8f0", "&:hover": { color: "#14b8a6" } }}>
               Browse Recipes
             </Link>
-            <Link href="#" color="inherit" underline="hover">
+            <Link href="#" underline="hover" sx={{ color: "#e2e8f0", "&:hover": { color: "#14b8a6" } }}>
               Categories
             </Link>
-            <Link href="#" color="inherit" underline="hover">
+            <Link href="#" underline="hover" sx={{ color: "#e2e8f0", "&:hover": { color: "#14b8a6" } }}>
               My Favorites
             </Link>
-            <Link href="#" color="inherit" underline="hover">
+            <Link href="#" underline="hover" sx={{ color: "#e2e8f0", "&:hover": { color: "#14b8a6" } }}>
               Profile
             </Link>
           </Box>
@@ -62,7 +62,7 @@ const Footer = () => {
 
         {/* Contact & Social */}
         <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
-          <Typography variant="h6" gutterBottom sx={{ color: "white", fontWeight: "bold" }}>
+          <Typography variant="h6" gutterBottom sx={{ color: "#fb7185", fontWeight: "bold" }}>
             Connect With Us
           </Typography>
 
@@ -92,59 +92,46 @@ const Footer = () => {
           </Box>
 
           {/* Social Media Icons */}
-         {/* Social Media Icons */}
-<Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" }, gap: 1 }}>
-  <IconButton
-    color="inherit"
-    href="https://www.facebook.com/"
-    aria-label="Facebook"
-    sx={{
-      transition: "all 0.3s ease",
-      "&:hover": {
-        color: "#1877f2", // Facebook blue
-        transform: "scale(1.1)",
-      },
-    }}
-  >
-    <Facebook />
-  </IconButton>
-
-  <IconButton
-    color="inherit"
-    href="https://x.com/"
-    aria-label="Twitter"
-    sx={{
-      transition: "all 0.3s ease",
-      "&:hover": {
-        color: "#1da1f2", // Twitter blue
-        transform: "scale(1.1)",
-      },
-    }}
-  >
-    <Twitter />
-  </IconButton>
-
-  <IconButton
-    color="inherit"
-    href="https://www.instagram.com/"
-    aria-label="Instagram"
-    sx={{
-      transition: "all 0.3s ease",
-      "&:hover": {
-        color: "#e4405f", // Instagram pink
-        transform: "scale(1.1)",
-      },
-    }}
-  >
-    <Instagram />
-  </IconButton>
-</Box>
-
+          <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" }, gap: 1 }}>
+            <IconButton
+              color="inherit"
+              href="https://www.facebook.com/"
+              aria-label="Facebook"
+              sx={{
+                transition: "all 0.3s ease",
+                "&:hover": { color: "#1877f2", transform: "scale(1.1)" },
+              }}
+            >
+              <Facebook />
+            </IconButton>
+            <IconButton
+              color="inherit"
+              href="https://x.com/"
+              aria-label="Twitter"
+              sx={{
+                transition: "all 0.3s ease",
+                "&:hover": { color: "#1da1f2", transform: "scale(1.1)" },
+              }}
+            >
+              <Twitter />
+            </IconButton>
+            <IconButton
+              color="inherit"
+              href="https://www.instagram.com/"
+              aria-label="Instagram"
+              sx={{
+                transition: "all 0.3s ease",
+                "&:hover": { color: "#e4405f", transform: "scale(1.1)" },
+              }}
+            >
+              <Instagram />
+            </IconButton>
+          </Box>
         </Box>
       </Box>
 
       {/* Legal Links */}
-      <Box sx={{ mt: 4, pt: 2, borderTop: "1px solid #333" }}>
+      <Box sx={{ mt: 4, pt: 2, borderTop: "1px solid #334155" }}>
         <Box
           sx={{
             mb: 2,
@@ -154,22 +141,22 @@ const Footer = () => {
             flexWrap: "wrap",
           }}
         >
-          <Link href="#" color="inherit" underline="hover" variant="body2">
+          <Link href="#" underline="hover" variant="body2" sx={{ color: "#e2e8f0", "&:hover": { color: "#14b8a6" } }}>
             Privacy Policy
           </Link>
-          <Link href="#" color="inherit" underline="hover" variant="body2">
+          <Link href="#" underline="hover" variant="body2" sx={{ color: "#e2e8f0", "&:hover": { color: "#14b8a6" } }}>
             Terms of Service
           </Link>
-          <Link href="#" color="inherit" underline="hover" variant="body2">
+          <Link href="#" underline="hover" variant="body2" sx={{ color: "#e2e8f0", "&:hover": { color: "#14b8a6" } }}>
             Cookie Policy
           </Link>
-          <Link href="#" color="inherit" underline="hover" variant="body2">
+          <Link href="#" underline="hover" variant="body2" sx={{ color: "#e2e8f0", "&:hover": { color: "#14b8a6" } }}>
             Support
           </Link>
         </Box>
 
         {/* Copyright */}
-        <Typography variant="body2">
+        <Typography variant="body2" sx={{ color: "#94a3b8" }}>
           © {new Date().getFullYear()} FoodZone App by Sayan Mondal. All rights reserved.
         </Typography>
       </Box>

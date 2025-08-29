@@ -129,7 +129,7 @@ const CartPage: FC = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #ff3d00 0%, #ff6333 100%)",
+          background: "linear-gradient(135deg, #0f766e 0%, #14b8a6 100%)",
           color: "white",
         }}
       >
@@ -198,9 +198,9 @@ const CartPage: FC = () => {
             <ShoppingCartIcon 
               sx={{ 
                 fontSize: { xs: 60, sm: 80 }, 
-                color: "#ff3d00", 
+                color: "#fb7185", 
                 mb: 2,
-                opacity: 0.7
+                opacity: 0.8
               }} 
             />
             <Typography 
@@ -225,7 +225,7 @@ const CartPage: FC = () => {
               startIcon={<RestaurantMenuIcon />}
               onClick={() => router.push("/menu")}
               sx={{
-                background: "linear-gradient(135deg, #ff3d00 0%, #ff6333 100%)",
+                background: "linear-gradient(135deg, #0f766e 0%, #14b8a6 100%)",
                 color: "white",
                 px: 4,
                 py: 1.5,
@@ -234,9 +234,9 @@ const CartPage: FC = () => {
                 fontSize: "1rem",
                 textTransform: "none",
                 "&:hover": {
-                  background: "linear-gradient(135deg, #ff6333 0%, #ff8a50 100%)",
+                  background: "linear-gradient(135deg, #14b8a6 0%, #0f766e 100%)",
                   transform: "translateY(-2px)",
-                  boxShadow: "0 6px 20px rgba(255, 61, 0, 0.3)",
+                  boxShadow: "0 6px 20px rgba(15, 118, 110, 0.3)",
                 },
                 transition: "all 0.2s ease",
               }}
@@ -254,7 +254,7 @@ const CartPage: FC = () => {
       {/* Header */}
       <Box
         sx={{
-          background: "linear-gradient(135deg, #ff3d00 0%, #ff6333 100%)",
+          background: "linear-gradient(135deg, #0f766e 0%, #14b8a6 100%)",
           py: { xs: 3, sm: 4 },
           color: "white",
         }}
@@ -313,7 +313,7 @@ const CartPage: FC = () => {
                           border: "1px solid rgba(0, 0, 0, 0.05)",
                           borderRadius: 2,
                           "&:hover": {
-                            boxShadow: "0 2px 8px rgba(255, 61, 0, 0.1)",
+                            boxShadow: "0 2px 8px rgba(15, 118, 110, 0.15)",
                           },
                           transition: "all 0.2s ease",
                         }}
@@ -345,7 +345,7 @@ const CartPage: FC = () => {
                               </Typography>
                               <Typography 
                                 variant="h6" 
-                                color="#ff3d00"
+                                color="#fb7185"
                                 fontWeight={700}
                               >
                                 ₹{(qty * item.price).toFixed(2)}
@@ -367,7 +367,7 @@ const CartPage: FC = () => {
                               <IconButton 
                                 onClick={() => updateQuantity(item.$id, -1)}
                                 size="small"
-                                sx={{ color: "#ff3d00" }}
+                                sx={{ color: "#fb7185" }}
                               >
                                 <RemoveIcon />
                               </IconButton>
@@ -381,7 +381,7 @@ const CartPage: FC = () => {
                               <IconButton 
                                 onClick={() => updateQuantity(item.$id, 1)}
                                 size="small"
-                                sx={{ color: "#ff3d00" }}
+                                sx={{ color: "#fb7185" }}
                               >
                                 <AddIcon />
                               </IconButton>
@@ -391,8 +391,8 @@ const CartPage: FC = () => {
                             <IconButton 
                               onClick={() => removeItem(item.$id)}
                               sx={{ 
-                                color: "#d32f2f",
-                                "&:hover": { background: "rgba(211, 47, 47, 0.1)" }
+                                color: "#fb7185",
+                                "&:hover": { background: "rgba(251, 113, 133, 0.1)" }
                               }}
                             >
                               <DeleteIcon />
@@ -413,7 +413,7 @@ const CartPage: FC = () => {
               background: "white",
               borderRadius: 3,
               boxShadow: "0 4px 16px rgba(0, 0, 0, 0.05)",
-              border: "1px solid rgba(255, 61, 0, 0.1)",
+              border: "1px solid rgba(15, 118, 110, 0.15)",
             }}
           >
             <Box sx={{ p: { xs: 3, sm: 4 } }}>
@@ -434,14 +434,14 @@ const CartPage: FC = () => {
                 
                 <Stack direction="row" justifyContent="space-between">
                   <Typography variant="body1">Delivery Fee</Typography>
-                  <Typography variant="body1" fontWeight={600} color="#4caf50">Free</Typography>
+                  <Typography variant="body1" fontWeight={600} color="#0f766e">Free</Typography>
                 </Stack>
                 
                 <Divider sx={{ my: 1 }} />
                 
                 <Stack direction="row" justifyContent="space-between">
                   <Typography variant="h6" fontWeight={700}>Total</Typography>
-                  <Typography variant="h6" fontWeight={700} color="#ff3d00">
+                  <Typography variant="h6" fontWeight={700} color="#fb7185">
                     ₹{totalPrice.toFixed(2)}
                   </Typography>
                 </Stack>
@@ -460,15 +460,15 @@ const CartPage: FC = () => {
               startIcon={<ClearAllIcon />}
               onClick={handleClearCart}
               sx={{
-                color: "#d32f2f",
-                borderColor: "#d32f2f",
+                color: "#fb7185",
+                borderColor: "#fb7185",
                 py: 1.5,
                 borderRadius: "30px",
                 fontWeight: 600,
                 textTransform: "none",
                 "&:hover": {
-                  borderColor: "#d32f2f",
-                  background: "rgba(211, 47, 47, 0.05)",
+                  borderColor: "#fb7185",
+                  background: "rgba(251, 113, 133, 0.05)",
                 },
               }}
             >
@@ -482,7 +482,7 @@ const CartPage: FC = () => {
               onClick={handleCheckout}
               disabled={isProcessing}
               sx={{
-                background: "linear-gradient(135deg, #ff3d00 0%, #ff6333 100%)",
+                background: "linear-gradient(135deg, #0f766e 0%, #14b8a6 100%)",
                 color: "white",
                 py: 1.5,
                 borderRadius: "30px",
@@ -490,12 +490,12 @@ const CartPage: FC = () => {
                 fontSize: { xs: "0.9rem", sm: "1rem" },
                 textTransform: "none",
                 "&:hover": {
-                  background: "linear-gradient(135deg, #ff6333 0%, #ff8a50 100%)",
+                  background: "linear-gradient(135deg, #14b8a6 0%, #0f766e 100%)",
                   transform: "translateY(-1px)",
-                  boxShadow: "0 6px 20px rgba(255, 61, 0, 0.3)",
+                  boxShadow: "0 6px 20px rgba(15, 118, 110, 0.3)",
                 },
                 "&:disabled": {
-                  background: "rgba(255, 61, 0, 0.5)",
+                  background: "rgba(15, 118, 110, 0.5)",
                   color: "rgba(255, 255, 255, 0.7)",
                 },
                 transition: "all 0.2s ease",
