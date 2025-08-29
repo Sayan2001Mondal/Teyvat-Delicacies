@@ -406,36 +406,31 @@ export default function ContactPage() {
               </Stack>
 
               {/* Message Field */}
-              <TextField
-                fullWidth
-                label="Message"
-                multiline
-                rows={isSmall ? 4 : 6}
-                value={formData.message}
-                onChange={handleInputChange("message")}
-                required
-                size={isSmall ? "small" : "medium"}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start" sx={{ alignSelf: "flex-start", mt: { xs: 1.5, sm: 2 } }}>
-                      <MessageIcon sx={{ color: "#0f766e", fontSize: { xs: 20, sm: 24 } }} />
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "&:hover fieldset": {
-                      borderColor: "#0f766e",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#0f766e",
-                    },
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": {
-                    color: "#0f766e",
-                  },
-                }}
-              />
+             <Box>
+  <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1 }}>
+    <MessageIcon sx={{ color: "#0f766e", fontSize: 22 }} />
+    <Typography variant="body2" fontWeight={600}>
+      Message
+    </Typography>
+  </Stack>
+  <TextField
+    fullWidth
+    multiline
+    rows={isSmall ? 4 : 6}
+    value={formData.message}
+    onChange={handleInputChange("message")}
+    required
+    size={isSmall ? "small" : "medium"}
+    sx={{
+      "& .MuiOutlinedInput-root": {
+        "&:hover fieldset": { borderColor: "#0f766e" },
+        "&.Mui-focused fieldset": { borderColor: "#0f766e" },
+      },
+      "& .MuiInputLabel-root.Mui-focused": { color: "#0f766e" },
+    }}
+  />
+</Box>
+
 
               {/* Submit Button */}
               <Button
