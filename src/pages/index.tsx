@@ -1,7 +1,20 @@
 "use client";
 
-import { useEffect } from "react";
-import { Box, Container, Typography, Button, Stack, useTheme, useMediaQuery } from "@mui/material";
+import { useEffect, useState } from "react";
+import { 
+  Box, 
+  Container, 
+  Typography, 
+  Button, 
+  Stack, 
+  useTheme, 
+  useMediaQuery,
+  Card,
+  CardContent,
+  Avatar,
+  Rating,
+  Chip
+} from "@mui/material";
 import Link from "next/link";
 import Splide from "@splidejs/splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
@@ -16,6 +29,61 @@ const foodImages = [
   "/images/mushroom-risotto.jpg",
 ];
 
+// New data for enhanced sections
+const features = [
+  {
+    icon: "🚚",
+    title: "Fast Delivery",
+    description: "Get your favorite meals delivered in 30 minutes or less"
+  },
+  {
+    icon: "👨‍🍳",
+    title: "Expert Chefs",
+    description: "Prepared by professional chefs with years of experience"
+  },
+  {
+    icon: "🌱",
+    title: "Fresh Ingredients",
+    description: "We source only the freshest, locally-sourced ingredients"
+  },
+  {
+    icon: "💎",
+    title: "Premium Quality",
+    description: "Restaurant-quality meals at affordable prices"
+  }
+];
+
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    avatar: "S",
+    rating: 5,
+    comment: "Absolutely amazing! The food arrived hot and fresh. Best delivery service in town!",
+    location: "New York, NY"
+  },
+  {
+    name: "Mike Chen",
+    avatar: "M",
+    rating: 5,
+    comment: "The variety is incredible and everything tastes restaurant-quality. Highly recommend!",
+    location: "Los Angeles, CA"
+  },
+  {
+    name: "Emily Davis",
+    avatar: "E",
+    rating: 4,
+    comment: "Great flavors and quick delivery. The chicken curry is my absolute favorite!",
+    location: "Chicago, IL"
+  }
+];
+
+const stats = [
+  { number: 10000, suffix: "K+", label: "Happy Customers" },
+  { number: 500, suffix: "+", label: "Dishes Available" },
+  { number: 15, suffix: "min", label: "Average Prep Time" },
+  { number: 4.9, suffix: "★", label: "Customer Rating" }
+];
+
 export default function HomePage() {
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.only("xs"));
@@ -23,6 +91,9 @@ export default function HomePage() {
   const isMd = useMediaQuery(theme.breakpoints.only("md"));
   const isLg = useMediaQuery(theme.breakpoints.only("lg"));
   const isXl = useMediaQuery(theme.breakpoints.up("xl"));
+
+  // State for animated counters
+  const [counters, setCounters] = useState([0, 0, 0, 0]);
 
   useEffect(() => {
     const splide = new Splide(".splide", {
@@ -41,6 +112,34 @@ export default function HomePage() {
       splide.destroy();
     };
   }, [isXs, isSm, isMd, isLg, isXl]);
+
+  // Counter animation effect
+  useEffect(() => {
+    const duration = 2000; // 2 seconds
+    const steps = 60; // 60 steps for smooth animation
+    const stepDuration = duration / steps;
+
+    let currentStep = 0;
+    const timer = setInterval(() => {
+      currentStep++;
+      const progress = currentStep / steps;
+      
+      setCounters([
+        Math.floor(stats[0].number * progress), // 10000
+        Math.floor(stats[1].number * progress), // 500
+        Math.floor(stats[2].number * progress), // 15
+        parseFloat((stats[3].number * progress).toFixed(1)), // 4.9
+      ]);
+
+      if (currentStep >= steps) {
+        clearInterval(timer);
+        // Set final values to ensure accuracy
+        setCounters([stats[0].number, stats[1].number, stats[2].number, stats[3].number]);
+      }
+    }, stepDuration);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <>
@@ -177,6 +276,289 @@ export default function HomePage() {
               </ul>
             </div>
           </div>
+        </Container>
+      </Box>
+
+      {/* Stats Section */}
+      <Box sx={{ py: { xs: 4, sm: 6 }, background: "linear-gradient(135deg, #0f766e 0%, #14b8a6 100%)" }}>
+        <Container maxWidth="lg">
+          <Stack 
+            direction={{ xs: "column", sm: "row" }} 
+            spacing={4} 
+            justifyContent="space-around" 
+            alignItems="center"
+          >
+            {stats.map((stat, index) => (
+              <Box key={index} textAlign="center" sx={{ minWidth: "120px" }}>
+                <Typography
+                  variant="h2"
+                  fontWeight={800}
+                  sx={{
+                    color: "white",
+                    fontSize: { xs: "2rem", sm: "2.5rem", md: "3rem" },
+                    textShadow: "2px 2px 4px rgba(0,0,0,0.3)",
+                  }}
+                >
+                  {index === 0 ? Math.floor(counters[index] / 1000) + "K+" :
+                   index === 1 ? counters[index] + "+" :
+                   index === 2 ? counters[index] + "min" :
+                   counters[index] + "★"}
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: "rgba(255,255,255,0.9)",
+                    fontWeight: 500,
+                    fontSize: { xs: "0.9rem", sm: "1rem" },
+                  }}
+                >
+                  {stat.label}
+                </Typography>
+              </Box>
+            ))}
+          </Stack>
+        </Container>
+      </Box>
+
+      {/* Features Section */}
+      <Box sx={{ py: { xs: 6, sm: 8 }, background: "#f8fafc" }}>
+        <Container maxWidth="lg">
+          <Typography
+            variant="h3"
+            align="center"
+            fontWeight={700}
+            gutterBottom
+            color="#0f766e"
+            sx={{ 
+              fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.8rem" },
+              mb: { xs: 4, sm: 6 }
+            }}
+          >
+            Why Choose FoodZone?
+          </Typography>
+          
+          <Box sx={{ 
+            display: "flex", 
+            flexDirection: { xs: "column", md: "row" },
+            gap: { xs: 3, sm: 4 },
+            flexWrap: "wrap",
+            justifyContent: "center"
+          }}>
+            {features.map((feature, index) => (
+              <Card
+                key={index}
+                sx={{
+                  flex: { xs: "1", md: "0 1 calc(50% - 16px)", lg: "0 1 calc(25% - 16px)" },
+                  minWidth: { xs: "100%", sm: "280px" },
+                  maxWidth: { xs: "100%", md: "300px" },
+                  p: 2,
+                  textAlign: "center",
+                  border: "1px solid rgba(20, 184, 166, 0.1)",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-8px)",
+                    boxShadow: "0 12px 30px rgba(20, 184, 166, 0.15)",
+                  },
+                }}
+              >
+                <CardContent>
+                  <Typography
+                    variant="h2"
+                    sx={{ 
+                      fontSize: { xs: "2.5rem", sm: "3rem" }, 
+                      mb: 2,
+                      lineHeight: 1
+                    }}
+                  >
+                    {feature.icon}
+                  </Typography>
+                  <Typography
+                    variant="h6"
+                    fontWeight={600}
+                    gutterBottom
+                    color="#0f766e"
+                    sx={{ fontSize: { xs: "1rem", sm: "1.1rem" } }}
+                  >
+                    {feature.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ 
+                      fontSize: { xs: "0.85rem", sm: "0.9rem" },
+                      lineHeight: 1.6
+                    }}
+                  >
+                    {feature.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))}
+          </Box>
+        </Container>
+      </Box>
+
+      {/* Testimonials Section */}
+      <Box sx={{ py: { xs: 6, sm: 8 }, background: "rgba(20,184,166,0.03)" }}>
+        <Container maxWidth="lg">
+          <Typography
+            variant="h3"
+            align="center"
+            fontWeight={700}
+            gutterBottom
+            color="#0f766e"
+            sx={{ 
+              fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.8rem" },
+              mb: { xs: 4, sm: 6 }
+            }}
+          >
+            What Our Customers Say
+          </Typography>
+          
+          <Box sx={{ 
+            display: "flex", 
+            flexDirection: { xs: "column", md: "row" },
+            gap: { xs: 3, sm: 4 },
+            justifyContent: "center"
+          }}>
+            {testimonials.map((testimonial, index) => (
+              <Card
+                key={index}
+                sx={{
+                  flex: { xs: "1", md: "0 1 calc(33.33% - 16px)" },
+                  maxWidth: { xs: "100%", md: "350px" },
+                  p: 3,
+                  boxShadow: "0 6px 25px rgba(0,0,0,0.1)",
+                  transition: "all 0.3s ease",
+                  "&:hover": {
+                    transform: "translateY(-5px)",
+                    boxShadow: "0 10px 35px rgba(0,0,0,0.15)",
+                  },
+                }}
+              >
+                <CardContent>
+                  <Stack direction="row" spacing={2} alignItems="center" mb={2}>
+                    <Avatar
+                      sx={{
+                        bgcolor: "#14b8a6",
+                        color: "white",
+                        width: 48,
+                        height: 48,
+                        fontSize: "1.2rem",
+                        fontWeight: 600
+                      }}
+                    >
+                      {testimonial.avatar}
+                    </Avatar>
+                    <Box>
+                      <Typography variant="h6" fontWeight={600} color="#0f766e">
+                        {testimonial.name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {testimonial.location}
+                      </Typography>
+                    </Box>
+                  </Stack>
+                  
+                  <Rating value={testimonial.rating} readOnly sx={{ mb: 2 }} />
+                  
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontStyle: "italic",
+                      lineHeight: 1.6,
+                      color: "text.primary"
+                    }}
+                  >
+                    "{testimonial.comment}"
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))}
+          </Box>
+        </Container>
+      </Box>
+
+      {/* Call-to-Action Section */}
+      <Box
+        sx={{
+          py: { xs: 6, sm: 8 },
+          background: "linear-gradient(135deg, #fb7185 0%, #f43f5e 100%)",
+          textAlign: "center",
+        }}
+      >
+        <Container maxWidth="md">
+          <Typography
+            variant="h3"
+            fontWeight={700}
+            color="white"
+            gutterBottom
+            sx={{ 
+              fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.8rem" },
+              textShadow: "2px 2px 4px rgba(0,0,0,0.3)"
+            }}
+          >
+            Ready to Order?
+          </Typography>
+          
+          <Typography
+            variant="h6"
+            color="rgba(255,255,255,0.9)"
+            sx={{ 
+              mb: 4,
+              maxWidth: "600px",
+              mx: "auto",
+              fontSize: { xs: "1rem", sm: "1.1rem" },
+              lineHeight: 1.6
+            }}
+          >
+            Join thousands of satisfied customers and experience the best food delivery service in town!
+          </Typography>
+          
+          <Stack 
+            direction={{ xs: "column", sm: "row" }} 
+            spacing={2} 
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Button
+              component={Link as any}
+              href="/menu"
+              size="large"
+              sx={{
+                background: "white",
+                color: "#fb7185",
+                px: { xs: 4, sm: 5 },
+                py: { xs: 1.5, sm: 2 },
+                borderRadius: "50px",
+                fontWeight: 700,
+                fontSize: { xs: "1rem", sm: "1.1rem" },
+                textTransform: "none",
+                minWidth: "180px",
+                boxShadow: "0 4px 15px rgba(255,255,255,0.3)",
+                "&:hover": {
+                  background: "rgba(255,255,255,0.95)",
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 6px 20px rgba(255,255,255,0.4)",
+                },
+              }}
+            >
+              Order Now 🚀
+            </Button>
+            
+            <Chip
+              label="🎉 Free delivery on orders over $25"
+              sx={{
+                background: "rgba(255,255,255,0.2)",
+                color: "white",
+                fontWeight: 600,
+                fontSize: { xs: "0.85rem", sm: "0.9rem" },
+                px: 1,
+                py: 0.5,
+              }}
+            />
+          </Stack>
         </Container>
       </Box>
     </>

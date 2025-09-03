@@ -22,7 +22,7 @@ const Footer = () => {
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
-          alignItems: "flex-start",
+          alignItems: { xs: "center", md: "flex-start" },
           maxWidth: 1200,
           mx: "auto",
           px: 2,
@@ -30,7 +30,7 @@ const Footer = () => {
         }}
       >
         {/* About Section */}
-        <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
+        <Box sx={{ flex: 1, textAlign: "center", width: { xs: "100%", md: "auto" } }}>
           <Typography variant="h6" gutterBottom sx={{ color: "#fb7185", fontWeight: "bold" }}>
             About FoodZone
           </Typography>
@@ -40,11 +40,11 @@ const Footer = () => {
         </Box>
 
         {/* Quick Links */}
-        <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
+        <Box sx={{ flex: 1, textAlign: "center", width: { xs: "100%", md: "auto" } }}>
           <Typography variant="h6" gutterBottom sx={{ color: "#fb7185", fontWeight: "bold" }}>
             Quick Links
           </Typography>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 1, alignItems: "center" }}>
             <Link href="/menu" underline="hover" sx={{ color: "#e2e8f0", "&:hover": { color: "#14b8a6" } }}>
               Browse Recipes
             </Link>
@@ -61,7 +61,7 @@ const Footer = () => {
         </Box>
 
         {/* Contact & Social */}
-        <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
+        <Box sx={{ flex: 1, textAlign: "center", width: { xs: "100%", md: "auto" } }}>
           <Typography variant="h6" gutterBottom sx={{ color: "#fb7185", fontWeight: "bold" }}>
             Connect With Us
           </Typography>
@@ -70,21 +70,35 @@ const Footer = () => {
           <Box sx={{ mb: 2 }}>
             <Typography
               variant="body2"
-              sx={{ display: "flex", alignItems: "center", justifyContent: { xs: "center", md: "flex-start" }, mb: 1 }}
+              sx={{ 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center",
+                mb: 1 
+              }}
             >
               <Email sx={{ mr: 1, fontSize: 16 }} />
               contact@FoodZone.com
             </Typography>
             <Typography
               variant="body2"
-              sx={{ display: "flex", alignItems: "center", justifyContent: { xs: "center", md: "flex-start" }, mb: 1 }}
+              sx={{ 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center",
+                mb: 1 
+              }}
             >
               <Phone sx={{ mr: 1, fontSize: 16 }} />
               +1 (555) 123-4567
             </Typography>
             <Typography
               variant="body2"
-              sx={{ display: "flex", alignItems: "center", justifyContent: { xs: "center", md: "flex-start" } }}
+              sx={{ 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center"
+              }}
             >
               <LocationOn sx={{ mr: 1, fontSize: 16 }} />
               New York, NY
@@ -92,7 +106,7 @@ const Footer = () => {
           </Box>
 
           {/* Social Media Icons */}
-          <Box sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-start" }, gap: 1 }}>
+          <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
             <IconButton
               color="inherit"
               href="https://www.facebook.com/"
