@@ -90,14 +90,33 @@ export default function ContactPage() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    
-    try {
-      // Simulate form submission - replace with actual API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      toast.success("Message sent successfully! We'll get back to you soon.");
+  e.preventDefault();
+  setLoading(true);
+
+  const accesskey = process.env.NEXT_PUBLIC_EMAIL_API_KEY!;
+  const data = {
+    access_key: accesskey,
+    name: formData.name,
+    email: formData.email,
+    phone: formData.phone,
+    subject: formData.subject,
+    message: formData.message,
+  };
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      toast.success("✅ Message sent successfully!");
       setFormData({
         name: "",
         email: "",
@@ -105,12 +124,17 @@ export default function ContactPage() {
         subject: "",
         message: "",
       });
-    } catch (error) {
-      toast.error("Failed to send message. Please try again.");
-    } finally {
-      setLoading(false);
+    } else {
+      toast.error("❌ Failed to send message. Please try again later.");
     }
-  };
+  } catch (error) {
+    console.error("Web3Forms Error:", error);
+    toast.error("⚠️ Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const contactInfo = [
     {
