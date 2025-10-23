@@ -80,7 +80,7 @@ export default function AboutUsPage() {
                 opacity: 0.9,
               }}
             >
-              Delicious meals delivered fresh to your doorstep, crafted with passion and care.
+              Delicious meals delivered fresh to your doorstep, crafted with passion, love and care.
             </Typography>
           </Container>
         </Box>
